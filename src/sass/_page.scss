@@ -1,0 +1,102 @@
+@import "elevation";
+@import "vars";
+
+.page {
+    .material {
+        margin: $page-material-margin;
+        border-radius: 2px;
+        @include md-elevation($card-elevation-default);
+        background: $color-material-bg;
+        padding: $page-material-padding;
+        position: relative;
+        z-index: 2;
+
+        &.dim {
+            opacity: 0.5;
+        }
+
+        & > *:last-child{
+            margin-bottom: $content-item-vertical-margin !important;
+        }
+
+        h4 {
+            margin: $content-item-vertical-margin $page-margin $page-header-spacing;
+            font-size: $title-font-size;
+            line-height: $title-line-height;
+        }
+
+        h5 {
+            font-size: $subtitle-font-size;
+            margin: 0 0 $page-header-spacing 0;
+        }
+
+        .metadata {
+            margin: 0 $page-margin $page-item-spacing * 2;
+            padding-bottom: $page-item-spacing * 2;
+            border-bottom: 1px solid $color-hr;
+
+            ol {
+                margin: -($page-header-spacing - $page-item-spacing) 0 $page-header-spacing 0;
+
+                li {
+                    line-height: 1.5em;
+                    font-style: italic;
+                }
+            }
+
+            .taglist {
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            &:last-child {
+                border-bottom: 0px;
+                margin-bottom: 0px;
+                padding-bottom: 0px;
+            }
+        }
+
+        .description {
+            line-height: 1.4;
+            margin: 0 $page-margin;
+
+            p:first-child {
+                margin-top: 0;
+            }
+
+            .image {
+                max-width: 90%;
+                text-align: center;
+                margin: auto;
+
+                img {
+                    max-width: 100%;
+                }
+
+                p {
+                    margin-top: 0;
+                    text-align: left;
+                }
+            }
+        }
+
+        button, .button {
+            display: inline-block;
+            text-decoration: none;
+            padding: $content-padding $margin;
+            font-size: 1.2em;
+            background: $color-primary;
+            color: $color-primary-text;
+            border: 0px;
+            cursor: pointer;
+            border-radius: $border-radius;
+            @include md-elevation(2);
+            @include md-elevation-transition();
+
+            &:hover {
+                @include md-elevation(8);
+            }
+        }
+
+    }
+}

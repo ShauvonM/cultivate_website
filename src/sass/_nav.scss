@@ -1,0 +1,33 @@
+nav {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    width: 100%;
+    @include fixed(0,0,null,0);
+    z-index: 5;
+
+    .logo {
+        height: 100%;
+        max-height: 130px;
+    }
+}
+
+.curtain {
+    content: "";
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: $curtain-height;
+    background: $color-secondary;
+    overflow: hidden;
+    z-index: 1;
+
+    //@include md-elevation(3);
+
+    @media #{$media-mobile} {
+        height: $curtain-height;
+    }
+}

@@ -1,0 +1,80 @@
+@import "vars";
+@import "elevation";
+@import "mixins";
+
+html {
+    background: $color-secondary;
+}
+
+body {
+    font-family: $font-family;
+    background: $color-window-bg;
+    color: $color-text;
+}
+
+a {
+    color: $color-primary;
+
+    &:visited {
+        color: $color-primary;
+    }
+    &.active {
+        color: $color-secondary;
+        text-decoration: none;
+    }
+}
+
+h2, h3, h4, h5, p, button {
+    margin: $content-item-vertical-margin $content-item-horizontal-margin;
+}
+
+em {
+    font-style: italic;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.error {
+    color: darkred;
+
+    &select {
+        border-color: darkred;
+    }
+}
+
+.backdrop {
+    @include fixed(0,100%,0,0);
+    z-index: 4000;
+    background: $color-shade;
+    opacity: 0;
+    transition: opacity $swift-ease-out-duration $swift-ease-out-timing-function, right 0ms $swift-ease-out-duration;
+
+    &.show {
+        transition: opacity $swift-ease-out-duration $swift-ease-out-timing-function;
+        right: 0px;
+        opacity: 1;
+    }
+}
+
+.clearfix {
+    clear: both;
+}
+
+.invisible {
+    visibility: hidden !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+cultivate {
+
+}
+
+@import "bits";
+@import "nav";
+@import "page";
+@import "home";
