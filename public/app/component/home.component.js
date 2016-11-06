@@ -13,8 +13,13 @@ var app_component_1 = require("./app.component");
 var HomeComponent = (function () {
     function HomeComponent(_app) {
         this._app = _app;
+        this.scrollpos = 0;
     }
     HomeComponent.prototype.ngOnInit = function () {
+        this.navStartHeight = window.innerHeight * 0.5;
+    };
+    HomeComponent.prototype.onScroll = function () {
+        this.scrollpos = document.body.scrollTop;
     };
     HomeComponent = __decorate([
         core_1.Component({

@@ -62,11 +62,12 @@ $margin: 14px;
 $border-radius: 2px;
 
 // pages
+$page-padding: $content-item-vertical-margin 0;
 $page-header-spacing: 12px;
 $page-margin: 5%;
 $page-item-spacing: 8px;
 $page-material-padding: 16px;
-$page-material-margin: $content-item-vertical-margin 6% 30px;
+$page-material-margin: $content-item-vertical-margin 6% $content-item-vertical-margin;
 
 $title-font-size: 28px;
 $subtitle-font-size: 18px;

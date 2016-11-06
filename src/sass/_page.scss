@@ -2,6 +2,8 @@
 @import "vars";
 
 .page {
+    padding: $page-padding;
+
     .material {
         margin: $page-material-margin;
         border-radius: 2px;
@@ -13,6 +15,13 @@
 
         &.dim {
             opacity: 0.5;
+        }
+
+        &:first-child {
+            margin-top: 0px;
+        }
+        &:last-child {
+            margin-bottom: 0px;
         }
 
         & > *:last-child{
