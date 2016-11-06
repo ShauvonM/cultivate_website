@@ -9,26 +9,31 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var app_component_1 = require("./app.component");
-var HomeComponent = (function () {
-    function HomeComponent(_app) {
-        this._app = _app;
+var NavComponent = (function () {
+    function NavComponent() {
     }
-    HomeComponent.prototype.ngOnInit = function () {
+    NavComponent.prototype.ngOnInit = function () {
+        this.onResize();
     };
-    HomeComponent.prototype.onScroll = function (scrollpos) {
-        this.scrollpos = scrollpos;
+    NavComponent.prototype.onResize = function () {
+        var nav = document.querySelector('nav');
+        nav.removeAttribute('style');
+        this.navStartHeight = nav.offsetHeight;
+        this.onScroll();
     };
-    HomeComponent = __decorate([
+    NavComponent.prototype.onScroll = function () {
+        this.scrollpos = document.body.scrollTop;
+    };
+    NavComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'cultivate-home',
-            templateUrl: '../template/home.component.html'
+            selector: 'nav',
+            templateUrl: '../template/nav.component.html'
         }), 
-        __metadata('design:paramtypes', [app_component_1.AppComponent])
-    ], HomeComponent);
-    return HomeComponent;
+        __metadata('design:paramtypes', [])
+    ], NavComponent);
+    return NavComponent;
 }());
-exports.HomeComponent = HomeComponent;
+exports.NavComponent = NavComponent;
 
-//# sourceMappingURL=home.component.js.map
+//# sourceMappingURL=nav.component.js.map

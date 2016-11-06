@@ -7,12 +7,12 @@ import { AppComponent } from "./app.component";
 
 @Component({
     moduleId: module.id,
-    selector: 'cultivate-home',
-    templateUrl: '../template/home.component.html'
+    selector: 'cultivate-calendar',
+    templateUrl: '../template/calendar.component.html'
 })
-export class HomeComponent implements OnInit {
+export class CalendarComponent implements OnInit {
 
-    scrollpos: number
+    scrollpos: number;
 
     constructor(
         private _app: AppComponent

@@ -10,25 +10,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var app_component_1 = require("./app.component");
-var HomeComponent = (function () {
-    function HomeComponent(_app) {
+var ForTeachersComponent = (function () {
+    function ForTeachersComponent(_app) {
         this._app = _app;
     }
-    HomeComponent.prototype.ngOnInit = function () {
+    ForTeachersComponent.prototype.ngOnInit = function () {
     };
-    HomeComponent.prototype.onScroll = function (scrollpos) {
+    ForTeachersComponent.prototype.onScroll = function (scrollpos) {
         this.scrollpos = scrollpos;
     };
-    HomeComponent = __decorate([
+    ForTeachersComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'cultivate-home',
-            templateUrl: '../template/home.component.html'
+            selector: 'cultivate-for-teachers',
+            templateUrl: '../template/for-teachers.component.html'
         }), 
         __metadata('design:paramtypes', [app_component_1.AppComponent])
-    ], HomeComponent);
-    return HomeComponent;
+    ], ForTeachersComponent);
+    return ForTeachersComponent;
 }());
-exports.HomeComponent = HomeComponent;
+exports.ForTeachersComponent = ForTeachersComponent;
 
-//# sourceMappingURL=home.component.js.map
+//# sourceMappingURL=for-teachers.component.js.map

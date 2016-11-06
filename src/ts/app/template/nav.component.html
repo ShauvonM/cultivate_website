@@ -1,0 +1,24 @@
+<nav (window:scroll)="onScroll()"
+    (window:resize)="onResize()"
+    [style.height]="(navStartHeight - scrollpos) + 'px'"
+    [class.anchored]="(navStartHeight - scrollpos) <= 70">
+
+    <div class="nav-flex">
+        <a routerLink="/about" routerLinkActive="active">about us</a>
+
+        <a routerLink="/classes" routerLinkActive="active">classes</a>
+
+        <a class="logo-wrapper" routerLink="/">
+            <img class="logo" src="/images/logo.png" />
+            <img *ngIf="large" class="logo-wallpaper" src="/images/home-icons.png" [style.opacity]="(1 - ((scrollpos - 50) / 300))" />
+        </a>
+
+        <a routerLink="/calendar" routerLinkActive="active">calendar</a>
+
+        <a routerLink="/for-teachers" routerLinkActive="active">for teachers</a>
+    </div>
+    
+    <img class="logo-no-text" src="/images/logo-no-text.png" (click)="smallLogoClick()" />
+
+    <h2 *ngIf="large" [style.opacity]="(1 - (scrollpos / 150))">cultivate your craft</h2>
+</nav>

@@ -14,6 +14,11 @@ var http_1 = require('@angular/http');
 var forms_1 = require('@angular/forms');
 var app_component_1 = require('../component/app.component');
 var home_component_1 = require('../component/home.component');
+var about_component_1 = require('../component/about.component');
+var classes_component_1 = require('../component/classes.component');
+var calendar_component_1 = require('../component/calendar.component');
+var for_teachers_component_1 = require('../component/for-teachers.component');
+var nav_view_1 = require('../view/nav.view');
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
     function AppModule() {
@@ -28,7 +33,12 @@ var AppModule = (function () {
             ],
             declarations: [
                 app_component_1.AppComponent,
-                home_component_1.HomeComponent
+                home_component_1.HomeComponent,
+                about_component_1.AboutComponent,
+                classes_component_1.ClassesComponent,
+                calendar_component_1.CalendarComponent,
+                for_teachers_component_1.ForTeachersComponent,
+                nav_view_1.NavView
             ],
             bootstrap: [app_component_1.AppComponent],
             providers: []

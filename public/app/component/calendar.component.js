@@ -10,25 +10,25 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var app_component_1 = require("./app.component");
-var HomeComponent = (function () {
-    function HomeComponent(_app) {
+var CalendarComponent = (function () {
+    function CalendarComponent(_app) {
         this._app = _app;
     }
-    HomeComponent.prototype.ngOnInit = function () {
+    CalendarComponent.prototype.ngOnInit = function () {
     };
-    HomeComponent.prototype.onScroll = function (scrollpos) {
+    CalendarComponent.prototype.onScroll = function (scrollpos) {
         this.scrollpos = scrollpos;
     };
-    HomeComponent = __decorate([
+    CalendarComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
-            selector: 'cultivate-home',
-            templateUrl: '../template/home.component.html'
+            selector: 'cultivate-calendar',
+            templateUrl: '../template/calendar.component.html'
         }), 
         __metadata('design:paramtypes', [app_component_1.AppComponent])
-    ], HomeComponent);
-    return HomeComponent;
+    ], CalendarComponent);
+    return CalendarComponent;
 }());
-exports.HomeComponent = HomeComponent;
+exports.CalendarComponent = CalendarComponent;
 
-//# sourceMappingURL=home.component.js.map
+//# sourceMappingURL=calendar.component.js.map

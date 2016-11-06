@@ -4,7 +4,7 @@ $color-primary-text: rgba(252,247,209, 1); // color for text when shown on top o
 
 $color-secondary: #ffa70f; // the color for various components
 
-$color-window-bg: #cdcdcd; // the window background color
+$color-window-bg: #e5e5e5; // the window background color
 $color-material-bg: #FFFFFF; // background color for the "sheets" of material (details page, for example)
 
 $color-shade: rgba(0,0,0,0.2); // the color for fullscreen 'shade' elements
@@ -17,9 +17,12 @@ $color-transparent: rgba(0,0,0,0); //utility!
 
 // FONT
 $font-family: 'Roboto', 'Helvetica Neue', sans-serif !default;
+$font-cursive: 'Reenie Beanie', cursive;
 
 // media query names
-$media-mobile: "only screen and (max-width: 700px)";
+$media-desktop: "only screen and (min-width: 500px)";
+$media-tablet: "only screen and (max-width: 768px)";
+$media-mobile: "only screen and (max-width: 500px)";
 
 // The default animation curves used by material design.
 $md-linear-out-slow-in-timing-function: cubic-bezier(0, 0, 0.2, 0.1) !default;
@@ -45,28 +48,28 @@ $swift-linear-timing-function: linear !default;
 $swift-linear: all $swift-linear-duration $swift-linear-timing-function !default;
 
 // elevations
-$card-elevation-default: 2;
-$card-elevation-active: 8;
-$toolbar-elevation: 4;
-$nav-elevation: 16;
-$dialog-elevation: 24;
+$page-elevation: 2;
+$nav-elevation: 12;
 
 // dimens
 $content-padding: 1%;
 $content-spacing: 1%;
 
-$content-item-vertical-margin: 2%;
+$content-item-vertical-margin: 5%;
 $content-item-horizontal-margin: 0;
 
 $margin: 14px;
 $border-radius: 2px;
 
+$nav-height: 15vw;
+
 // pages
-$page-padding: $content-item-vertical-margin 0;
+$page-padding: $nav-height $content-item-vertical-margin 0 $content-item-vertical-margin;
+$page-padding-mobile: $nav-height ($content-item-vertical-margin / 2) 0 ($content-item-vertical-margin / 2);
 $page-header-spacing: 12px;
 $page-margin: 5%;
 $page-item-spacing: 8px;
-$page-material-padding: 16px;
+$page-material-padding: 5%;
 $page-material-margin: $content-item-vertical-margin 6% $content-item-vertical-margin;
 
 $title-font-size: 28px;

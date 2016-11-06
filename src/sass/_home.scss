@@ -1,14 +1,12 @@
+$nav-height: 87.5vh;
+
 cultivate-home {
 
     nav {
-        height: 50vh;
-    }
-
-    .curtain {
-        height: 65vh;
+        height: $nav-height;
     }
 
     .page {
-        padding-top: 50vh;
+        padding-top: $nav-height;
     }
 }

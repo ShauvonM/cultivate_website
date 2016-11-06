@@ -1,48 +1,195 @@
 @import "mixins";
 
 nav {
+    @include fixed(0,0,null,0);
+    z-index: 5;
+    min-height: 3em;
+    height: $nav-height;
+
+    background-color: $color-material-bg;
+
+    @include md-elevation($nav-elevation);
+    
+    transition: #{$md-elevation-property} #{$md-elevation-transition-duration} #{$md-elevation-transition-timing-function},
+        background-color 200ms;
+
+    @media #{$media-mobile} {
+        min-height: 1.1em;
+    }
+    
+    .logo-no-text {
+        position: absolute;
+        top: 5px;
+        left: 50%;
+        width: 7vw;
+        margin-left: -3.5vw;
+        max-width: 231px;
+        opacity: 0;
+        transform: translateX(50px);
+        transition: opacity 300ms, transform 300ms;
+        cursor: pointer;
+
+        @media #{$media-mobile} {
+            width: 13.5vw;
+            margin-left: -6.75vw;
+        }
+    }
+
+    &.anchored {
+        //@include md-elevation($toolbar-elevation);
+        background-color: $color-secondary;
+
+        .logo {
+            opacity: 0;
+            transform: scale(0.9) translateX(-50px);
+        }
+        .logo-no-text {
+            opacity: 1;
+            transform: translateX(0px);
+        }
+        .logo-wallpaper {
+            display: none;
+        }
+
+        @media #{$media-mobile} {
+            a {
+                display: none;
+            }
+        }
+    }
+
+    h2 {
+        font-size: 3em;
+        text-align: center;
+        font-family: $font-cursive;
+        position: absolute;
+        bottom: $content-item-vertical-margin;
+        margin: 0;
+        width: 100%;
+
+        @media #{$media-mobile} {
+            font-size: 1em;
+            bottom: 1%;
+        }
+    }
+}
+
+.nav-flex {
     display: flex;
     justify-content: center;
     align-content: center;
     align-items: center;
     flex-wrap: nowrap;
+    overflow: hidden;
+
     width: 100%;
-    @include fixed(0,0,null,0);
-    z-index: 5;
-    min-height: 3em;
+    height: 100%;
+
+    @media #{$media-mobile} {
+        flex-direction: column;
+    }
+
+    .logo-wrapper {
+        z-index: 1;
+
+        @media #{$media-mobile} {
+            order: -1;
+            flex-grow: 0.35;
+        }
+    }
 
     .logo {
-        align-self: flex-start;
-        display: flex;
-        align-content: center;
-        align-items: center;
-        justify-content: center;
+        //height: 17.4%;
+        //max-height: 256px;
+        //min-height: 50px;
+        width: 31vw;
+        max-width: 800px;
+        transition: opacity 300ms, transform 300ms;
+        cursor: pointer;
 
-        img {
-            max-height: 130px;
+        @media #{$media-mobile} {
+            width: 60vw;
+        }
+    }
+
+    .logo-wallpaper {
+        width: 41vw;
+        position: absolute;
+        top: -9.5vw;
+        left: -5.5vw;
+        z-index: 1;
+        
+        @media #{$media-mobile} {
+            width: 79vw;
+            top: -18.5vw;
+            left: -11.5vw;
         }
     }
 
     a {
         text-decoration: none;
-        font-size: 1.5em;
+        font-size: 2em;
         flex-grow: 1;
         text-align: center;
+        font-family: $font-cursive;
+        color: $color-text;
+        flex-basis: 15vw;
+        position: relative;
+        z-index: 2;
+
+        &:visited {
+            color: $color-text;
+        }
+
+        &.active {
+            color: $color-primary;
+            font-weight: bold;
+        }
+
+        @media #{$media-tablet} {
+            font-size: 1.5em;
+        }
+
+        @media #{$media-mobile} {
+            flex-grow: 0;
+            font-size: 2em;
+            flex-basis: 1.3em;
+        }
     }
 }
 
-.curtain {
-    content: "";
-    display: block;
-    @include fixed(0,0,null,0);
-    height: $curtain-height;
-    background: rgba(0,0,0,0.8);
-    overflow: hidden;
-    z-index: 1;
+footer {
+    padding: $page-material-padding;
+    background: $color-text;
+    color: $color-material-bg;
+    position: relative;
+    z-index: 5;
+    display: flex;
+    justify-content: center;
 
-    //@include md-elevation(3);
+    @include md-elevation($nav-elevation);
 
-    @media #{$media-mobile} {
-        height: $curtain-height;
+    a {
+        text-decoration: none;
+        font-size: 2em;
+        flex-grow: 1;
+        text-align: center;
+        font-family: $font-cursive;
+        flex-basis: 15vw;
+
+        &:visited {
+            color: $color-primary;
+        }
+
+        &.active {
+            color: $color-primary;
+            font-weight: bold;
+        }
     }
+}
+
+.copyright {
+    padding: $page-material-padding 0;
+    display: flex;
+    justify-content: center;
 }

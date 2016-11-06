@@ -11,10 +11,30 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require("@angular/core");
 var router_1 = require("@angular/router");
 var home_component_1 = require("../component/home.component");
+var about_component_1 = require("../component/about.component");
+var classes_component_1 = require('../component/classes.component');
+var calendar_component_1 = require('../component/calendar.component');
+var for_teachers_component_1 = require('../component/for-teachers.component');
 var routes = [
     {
         path: '',
         component: home_component_1.HomeComponent
+    },
+    {
+        path: 'about',
+        component: about_component_1.AboutComponent
+    },
+    {
+        path: 'classes',
+        component: classes_component_1.ClassesComponent
+    },
+    {
+        path: 'calendar',
+        component: calendar_component_1.CalendarComponent
+    },
+    {
+        path: 'for-teachers',
+        component: for_teachers_component_1.ForTeachersComponent
     }
 ];
 var AppRoutingModule = (function () {

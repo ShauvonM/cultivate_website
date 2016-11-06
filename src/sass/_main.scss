@@ -3,12 +3,12 @@
 @import "mixins";
 
 html {
-    background: $color-window-bg;
+    background-color: $color-window-bg;
+    background-image: url('/images/wallpaper.png');
 }
 
 body {
     font-family: $font-family;
-    background: $color-window-bg;
     color: $color-text;
 }
 
@@ -24,7 +24,7 @@ a {
     }
 }
 
-h2, h3, h4, h5, p, button {
+h2, h3, h4, h5, p, button, .content-item {
     margin: $content-item-vertical-margin $content-item-horizontal-margin;
 }
 
