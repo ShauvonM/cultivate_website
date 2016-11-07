@@ -78,15 +78,16 @@
     border: 1px solid $color-hr;
     border-radius: $border-radius * 2;
     overflow: hidden;
+    align-items: center;
 
     h4 {
-        font-size: 1.5em;
-        margin: 2% 2% 0;
+        font-size: 2em;
+        margin: 0 2%;
+        font-family: $font-cursive;
     }
     h5 {
-        font-family: $font-cursive;
-        margin: 0 2%;
-        font-size: 1.3em;
+        margin: 0 2% 2%;
+        font-size: 0.8em;
     }
 
     .image-wrapper {

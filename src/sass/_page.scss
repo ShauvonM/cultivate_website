@@ -12,7 +12,6 @@
     .material {
         margin: $page-material-margin;
         border-radius: $border-radius;
-        //@include md-elevation($card-elevation-default);
         background: $color-material-bg;
         padding: $page-material-padding;
         position: relative;
@@ -22,11 +21,11 @@
         align-items: center;
         flex-direction: column;
 
+        //@include md-elevation($page-elevation);
+
         .left {
             align-self: flex-start;
         }
-
-        @include md-elevation($page-elevation);
 
         &.dim {
             opacity: 0.5;
@@ -61,6 +60,10 @@
             text-align: center;
             font-size: 3em;
             font-family: $font-cursive;
+
+            @media #{$media-mobile} {
+                font-size: 2.5em;
+            }
         }
 
         p {

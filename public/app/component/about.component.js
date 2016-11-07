@@ -31,7 +31,6 @@ var AboutComponent = (function () {
         this.teamService.getFounders()
             .then(function (team) {
             _this.teamData.push({
-                key: "founders",
                 data: team
             });
         });

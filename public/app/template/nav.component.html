@@ -3,6 +3,10 @@
     [style.height]="navHeight + 'px'"
     [class.anchored]="navHeight <= 70">
 
+    <a href="http://www.thespeakers-studio.com" target="_blank" *ngIf="large">
+        <img class="speakers-studio" src="/images/a-speakers-studio-project.png" [style.opacity]="(1-(scrollpos / 100))" />
+    </a>
+
     <div class="nav-flex">
         <a routerLink="/about" routerLinkActive="active">about us</a>
 
@@ -20,5 +24,5 @@
     
     <img class="logo-no-text" src="/images/logo-no-text.png" (click)="smallLogoClick()" />
 
-    <h2 *ngIf="large" [style.opacity]="(1 - (scrollpos / 150))">cultivate your craft</h2>
+    <h2 *ngIf="large" [style.opacity]="(1 - (scrollpos / 150))">for actors</h2>
 </nav>

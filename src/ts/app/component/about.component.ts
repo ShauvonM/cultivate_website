@@ -37,7 +37,6 @@ export class AboutComponent implements OnInit {
         this.teamService.getFounders()
             .then((team) => {
                 this.teamData.push({
-                    key: "founders",
                     data: team
                 });
             });

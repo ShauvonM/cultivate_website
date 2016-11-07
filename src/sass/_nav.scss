@@ -7,7 +7,7 @@ nav {
 
     background-color: $color-material-bg;
 
-    @include md-elevation($nav-elevation);
+    //@include md-elevation($nav-elevation);
     
     transition: #{$md-elevation-property} #{$md-elevation-transition-duration} #{$md-elevation-transition-timing-function},
         background-color 200ms;
@@ -15,6 +15,12 @@ nav {
     @media #{$media-mobile} {
         min-height: 1.1em;
         height: $nav-height-mobile;
+    }
+
+    .speakers-studio {
+        position: absolute;
+        top: 5px;
+        right: 5px;
     }
     
     .logo-no-text {
@@ -37,6 +43,10 @@ nav {
     &.anchored {
         //@include md-elevation($toolbar-elevation);
         background-color: $color-secondary;
+
+        .speakers-studio {
+            display: none;
+        }
 
         .logo {
             opacity: 0;
@@ -80,13 +90,13 @@ nav {
     align-content: center;
     align-items: center;
     flex-wrap: nowrap;
-    overflow: hidden;
 
     width: 100%;
     height: 100%;
 
     @media #{$media-mobile} {
         flex-direction: column;
+        overflow: hidden;
     }
 
     .logo-wrapper {

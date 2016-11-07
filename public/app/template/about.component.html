@@ -15,7 +15,7 @@
         <p>Raclette brunch synth, single-origin coffee tumeric art party hammock you probably haven't heard of them trust fund. Cold-pressed church-key YOLO readymade food truck locavore jianbing chillwave meggings cray, cornhole distillery. Meggings post-ironic messenger bag fingerstache hammock.</p>
 
         <div *ngFor="let data of teamData" class="fill">
-            <h2 *ngIf="data.data.length > 0">{{data.key}}</h2>
+            <h2 *ngIf="data.data.length > 0 && data.key">{{data.key}}</h2>
 
             <div class="grid">
 
@@ -24,14 +24,15 @@
                     [class.founder]="person.founder"
                     (click)="clickPerson(person)">
 
+                    <div class="image-wrapper">
+                        <img [src]="'/images/headshots/' + person.key + '.jpg'" />
+                    </div>
+
                     <h4>{{person.firstName}} {{person.lastName}}</h4>
 
                     <h5 *ngIf="person.title">{{person.title}}</h5>
                     <h5 *ngIf="!person.title">Teacher</h5>
-                    
-                    <div class="image-wrapper">
-                        <img [src]="'/images/headshots/' + person.key + '.jpg'" />
-                    </div>
+
                 </div>
 
             </div>
