@@ -18,7 +18,9 @@ var about_component_1 = require('../component/about.component');
 var classes_component_1 = require('../component/classes.component');
 var calendar_component_1 = require('../component/calendar.component');
 var for_teachers_component_1 = require('../component/for-teachers.component');
+var teacher_details_component_1 = require('../component/teacher-details.component');
 var nav_view_1 = require('../view/nav.view');
+var team_service_1 = require('../service/team.service');
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
     function AppModule() {
@@ -38,10 +40,11 @@ var AppModule = (function () {
                 classes_component_1.ClassesComponent,
                 calendar_component_1.CalendarComponent,
                 for_teachers_component_1.ForTeachersComponent,
+                teacher_details_component_1.TeacherDetailsComponent,
                 nav_view_1.NavView
             ],
             bootstrap: [app_component_1.AppComponent],
-            providers: []
+            providers: [team_service_1.TeamService]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

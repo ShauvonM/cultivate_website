@@ -62,18 +62,18 @@ $margin: 14px;
 $border-radius: 2px;
 
 $nav-height: 15vw;
+$nav-height-mobile: 85vw;
 
 // pages
 $page-padding: $nav-height $content-item-vertical-margin 0 $content-item-vertical-margin;
-$page-padding-mobile: $nav-height ($content-item-vertical-margin / 2) 0 ($content-item-vertical-margin / 2);
+$page-padding-mobile: $nav-height-mobile ($content-item-vertical-margin / 2) 0 ($content-item-vertical-margin / 2);
+
 $page-header-spacing: 12px;
 $page-margin: 5%;
 $page-item-spacing: 8px;
+
 $page-material-padding: 5%;
+$page-material-padding-mobile: 5vh;
 $page-material-margin: $content-item-vertical-margin 6% $content-item-vertical-margin;
 
-$title-font-size: 28px;
-$subtitle-font-size: 18px;
-$title-line-height: 32px;
-
-$curtain-height: 33vh;
+// content

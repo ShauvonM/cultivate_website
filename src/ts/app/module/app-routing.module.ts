@@ -7,6 +7,8 @@ import { ClassesComponent } from '../component/classes.component';
 import { CalendarComponent } from '../component/calendar.component';
 import { ForTeachersComponent } from '../component/for-teachers.component';
 
+import { TeacherDetailsComponent } from '../component/teacher-details.component';
+
 const routes: Routes = [
     {
         path: '',
@@ -15,6 +17,10 @@ const routes: Routes = [
     {
         path: 'about',
         component: AboutComponent
+    },
+    {
+        path: 'about/:key',
+        component: TeacherDetailsComponent
     },
     {
         path: 'classes',

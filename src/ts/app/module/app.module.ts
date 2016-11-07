@@ -11,7 +11,11 @@ import { ClassesComponent } from '../component/classes.component';
 import { CalendarComponent } from '../component/calendar.component';
 import { ForTeachersComponent } from '../component/for-teachers.component';
 
+import { TeacherDetailsComponent } from '../component/teacher-details.component';
+
 import { NavView } from '../view/nav.view';
+
+import { TeamService } from '../service/team.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -30,10 +34,12 @@ import { AppRoutingModule } from './app-routing.module';
         CalendarComponent,
         ForTeachersComponent,
 
+        TeacherDetailsComponent,
+
         NavView
     ],
     bootstrap: [ AppComponent ],
-    providers: []
+    providers: [ TeamService ]
 })
 
 export class AppModule { }

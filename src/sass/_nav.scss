@@ -1,8 +1,7 @@
 @import "mixins";
 
 nav {
-    @include fixed(0,0,null,0);
-    z-index: 5;
+    @include fixed(0,0,null,0, 5);
     min-height: 3em;
     height: $nav-height;
 
@@ -15,12 +14,11 @@ nav {
 
     @media #{$media-mobile} {
         min-height: 1.1em;
+        height: $nav-height-mobile;
     }
     
     .logo-no-text {
-        position: absolute;
-        top: 5px;
-        left: 50%;
+        @include abs(5px, null, null, 50%, 5);
         width: 7vw;
         margin-left: -3.5vw;
         max-width: 231px;
@@ -28,6 +26,7 @@ nav {
         transform: translateX(50px);
         transition: opacity 300ms, transform 300ms;
         cursor: pointer;
+        margin: 0;
 
         @media #{$media-mobile} {
             width: 13.5vw;
@@ -62,8 +61,9 @@ nav {
         font-size: 3em;
         text-align: center;
         font-family: $font-cursive;
-        position: absolute;
-        bottom: $content-item-vertical-margin;
+
+        @include abs(null, null, $content-item-vertical-margin, null, 1);
+
         margin: 0;
         width: 100%;
 
@@ -106,6 +106,7 @@ nav {
         max-width: 800px;
         transition: opacity 300ms, transform 300ms;
         cursor: pointer;
+        margin: 0;
 
         @media #{$media-mobile} {
             width: 60vw;
@@ -114,10 +115,9 @@ nav {
 
     .logo-wallpaper {
         width: 41vw;
-        position: absolute;
-        top: -9.5vw;
-        left: -5.5vw;
-        z-index: 1;
+        @include abs(-9.5vw, null, null, -5.5vw, 1);
+        margin: 0;
+        max-width: none;
         
         @media #{$media-mobile} {
             width: 79vw;

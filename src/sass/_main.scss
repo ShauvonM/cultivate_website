@@ -14,6 +14,7 @@ body {
 
 a {
     color: $color-primary;
+    text-decoration: none;
 
     &:visited {
         color: $color-primary;
@@ -25,7 +26,7 @@ a {
 }
 
 h2, h3, h4, h5, p, button, .content-item {
-    margin: $content-item-vertical-margin $content-item-horizontal-margin;
+    margin: 0 $content-item-horizontal-margin $content-item-vertical-margin;
 }
 
 em {
@@ -36,38 +37,9 @@ strong {
     font-weight: bold;
 }
 
-.error {
-    color: darkred;
-
-    &select {
-        border-color: darkred;
-    }
-}
-
-.backdrop {
-    @include fixed(0,100%,0,0);
-    z-index: 4000;
-    background: $color-shade;
-    opacity: 0;
-    transition: opacity $swift-ease-out-duration $swift-ease-out-timing-function, right 0ms $swift-ease-out-duration;
-
-    &.show {
-        transition: opacity $swift-ease-out-duration $swift-ease-out-timing-function;
-        right: 0px;
-        opacity: 1;
-    }
-}
-
-.clearfix {
-    clear: both;
-}
-
-.invisible {
-    visibility: hidden !important;
-}
-
-.hide {
-    display: none !important;
+img {
+    max-width: 100%;
+    margin: 0 auto $content-item-vertical-margin auto;
 }
 
 cultivate {

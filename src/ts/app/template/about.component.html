@@ -6,6 +6,38 @@
 
         <h2>about us</h2>
 
+        <p>Tofu cornhole put a bird on it cray taxidermy messenger bag. Hot chicken helvetica synth lomo flannel succulents. Kitsch meggings portland viral chartreuse blue bottle cold-pressed, listicle neutra. Small batch blog gastropub, intelligentsia blue bottle you probably haven't heard of them leggings normcore tattooed migas flexitarian mustache kombucha listicle. Direct trade kickstarter artisan lo-fi woke, art party shabby chic vinyl 90's wayfarers tofu meditation raw denim pug brunch. Pitchfork distillery edison bulb franzen, activated charcoal meh post-ironic. Poutine schlitz raw denim, aesthetic kombucha authentic banh mi squid listicle.</p>
+
+        <a class="button" routerLink="/contact">Contact Us</a>
+
+        <h2>the team</h2>
+
+        <p>Raclette brunch synth, single-origin coffee tumeric art party hammock you probably haven't heard of them trust fund. Cold-pressed church-key YOLO readymade food truck locavore jianbing chillwave meggings cray, cornhole distillery. Meggings post-ironic messenger bag fingerstache hammock.</p>
+
+        <div *ngFor="let data of teamData" class="fill">
+            <h2 *ngIf="data.data.length > 0">{{data.key}}</h2>
+
+            <div class="grid">
+
+                <div *ngFor="let person of data.data"
+                    class="model content-item clickable"
+                    [class.founder]="person.founder"
+                    (click)="clickPerson(person)">
+
+                    <h4>{{person.firstName}} {{person.lastName}}</h4>
+
+                    <h5 *ngIf="person.title">{{person.title}}</h5>
+                    <h5 *ngIf="!person.title">Teacher</h5>
+                    
+                    <div class="image-wrapper">
+                        <img [src]="'/images/headshots/' + person.key + '.jpg'" />
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
     </div>
 
 </div>

@@ -4,6 +4,7 @@
 .page {
     padding: $page-padding;
 
+
     @media #{$media-mobile} {
         padding: $page-padding-mobile;
     }
@@ -16,6 +17,14 @@
         padding: $page-material-padding;
         position: relative;
         z-index: 2;
+        min-height: 70vh;
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+
+        .left {
+            align-self: flex-start;
+        }
 
         @include md-elevation($page-elevation);
 
@@ -27,6 +36,10 @@
             margin-top: 0px;
             border-top-left-radius: 0;
             border-top-right-radius: 0;
+
+            @media #{$media-mobile} {
+                padding-top: $page-material-padding-mobile;
+            }
         }
         &:last-child {
             margin-bottom: 0px;
@@ -51,7 +64,7 @@
         }
 
         p {
-            line-height: 1.5em;
+            line-height: 1.7em;
         }
     }
 }

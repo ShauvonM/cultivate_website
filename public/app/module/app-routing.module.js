@@ -15,6 +15,7 @@ var about_component_1 = require("../component/about.component");
 var classes_component_1 = require('../component/classes.component');
 var calendar_component_1 = require('../component/calendar.component');
 var for_teachers_component_1 = require('../component/for-teachers.component');
+var teacher_details_component_1 = require('../component/teacher-details.component');
 var routes = [
     {
         path: '',
@@ -23,6 +24,10 @@ var routes = [
     {
         path: 'about',
         component: about_component_1.AboutComponent
+    },
+    {
+        path: 'about/:key',
+        component: teacher_details_component_1.TeacherDetailsComponent
     },
     {
         path: 'classes',

@@ -15,12 +15,21 @@ var NavView = (function () {
     }
     NavView.prototype.ngOnInit = function () {
         this.onResize();
+        if (!this.large && window.innerWidth <= 500) {
+            // mobile!
+            this.mobile = true;
+            if (this.scrollpos < this.navStartHeight) {
+                this.scrollTo(this.navStartHeight * 0.9, false);
+            }
+        }
     };
     NavView.prototype.onResize = function () {
         if (window.innerWidth != this.width) {
             var nav = document.querySelector('nav');
+            nav.className = "";
             nav.removeAttribute('style');
             this.navStartHeight = nav.offsetHeight;
+            this.navHeight = this.navStartHeight;
             // this will make up for mobile browsers screwing up the page height when you scroll
             var page = document.querySelector('.page');
             page.style.paddingTop = this.navStartHeight + 'px';
@@ -30,22 +39,29 @@ var NavView = (function () {
     };
     NavView.prototype.onScroll = function () {
         this.scrollpos = document.body.scrollTop;
+        // browsers will ignore height values less than 0
+        this.navHeight = Math.max(this.navStartHeight - this.scrollpos, 0);
         this.windowScroll.emit(this.scrollpos);
     };
     NavView.prototype.smallLogoClick = function () {
-        this._scrollTo(document.body, 0, 300);
+        this.scrollTo(0, true);
+    };
+    NavView.prototype.scrollTo = function (to, animate) {
+        this._scrollTo(document.body, to, animate ? 300 : 0);
     };
     NavView.prototype._scrollTo = function (element, to, duration) {
         var _this = this;
-        if (duration <= 0)
+        if (duration < 0)
             return;
         var difference = to - element.scrollTop;
-        var perTick = difference / duration * 10;
+        var perTick = duration > 0 ? difference / duration * 10 : difference;
         setTimeout(function () {
             element.scrollTop = element.scrollTop + perTick;
             if (element.scrollTop === to)
                 return;
-            _this._scrollTo(element, to, duration - 10);
+            if (duration - 10 > 0) {
+                _this._scrollTo(element, to, duration - 10);
+            }
         }, 10);
     };
     __decorate([
