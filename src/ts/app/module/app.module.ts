@@ -14,8 +14,10 @@ import { ForTeachersComponent } from '../component/for-teachers.component';
 import { TeacherDetailsComponent } from '../component/teacher-details.component';
 
 import { NavView } from '../view/nav.view';
+import { LabCardView } from '../view/lab-card.view';
 
 import { TeamService } from '../service/team.service';
+import { LabService } from '../service/lab.service';
 
 import { AppRoutingModule } from './app-routing.module';
 
@@ -36,10 +38,14 @@ import { AppRoutingModule } from './app-routing.module';
 
         TeacherDetailsComponent,
 
-        NavView
+        NavView,
+        LabCardView
     ],
     bootstrap: [ AppComponent ],
-    providers: [ TeamService ]
+    providers: [ 
+        TeamService,
+        LabService
+    ]
 })
 
 export class AppModule { }

@@ -9,7 +9,8 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-//import { TEAM } from '../data/team.data';
+var labs_data_1 = require('../data/labs.data');
+var team_service_1 = require('./team.service');
 var Lab = (function () {
     function Lab() {
     }
@@ -26,13 +27,45 @@ exports.Lab = Lab;
  * 5 - yearly
  */
 var LabService = (function () {
-    function LabService() {
+    function LabService(teamService) {
+        this.teamService = teamService;
         this.labs = [];
     }
     LabService.prototype.getLabs = function () {
+        var _this = this;
         if (!this._labPromise) {
+            this._labPromise = new Promise(function (resolve, reject) {
+                _this.labs = labs_data_1.LABS;
+                _this.labs.sort(function (lab1, lab2) {
+                    var val1 = lab1.dates[0];
+                    var val2 = lab2.dates[0];
+                    if (val1 > val2) {
+                        return 1;
+                    }
+                    if (val1 < val2) {
+                        return -1;
+                    }
+                    return 0;
+                });
+                resolve(_this.labs);
+            });
         }
         return this._labPromise;
+    };
+    LabService.prototype.getClasses = function () {
+        var _this = this;
+        return new Promise(function (resolve, reject) {
+            var classes = [];
+            _this.getLabs().then(function (labs) {
+                labs.forEach(function (lab) {
+                    // TODO: make this an enum?
+                    if (lab.type == "class") {
+                        classes.push(lab);
+                    }
+                });
+                resolve(classes);
+            });
+        });
     };
     LabService.prototype.getLab = function (uuid) {
         var _this = this;
@@ -48,7 +81,7 @@ var LabService = (function () {
     };
     LabService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [team_service_1.TeamService])
     ], LabService);
     return LabService;
 }());

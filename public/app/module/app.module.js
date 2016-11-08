@@ -20,7 +20,9 @@ var calendar_component_1 = require('../component/calendar.component');
 var for_teachers_component_1 = require('../component/for-teachers.component');
 var teacher_details_component_1 = require('../component/teacher-details.component');
 var nav_view_1 = require('../view/nav.view');
+var lab_card_view_1 = require('../view/lab-card.view');
 var team_service_1 = require('../service/team.service');
+var lab_service_1 = require('../service/lab.service');
 var app_routing_module_1 = require('./app-routing.module');
 var AppModule = (function () {
     function AppModule() {
@@ -41,10 +43,14 @@ var AppModule = (function () {
                 calendar_component_1.CalendarComponent,
                 for_teachers_component_1.ForTeachersComponent,
                 teacher_details_component_1.TeacherDetailsComponent,
-                nav_view_1.NavView
+                nav_view_1.NavView,
+                lab_card_view_1.LabCardView
             ],
             bootstrap: [app_component_1.AppComponent],
-            providers: [team_service_1.TeamService]
+            providers: [
+                team_service_1.TeamService,
+                lab_service_1.LabService
+            ]
         }), 
         __metadata('design:paramtypes', [])
     ], AppModule);

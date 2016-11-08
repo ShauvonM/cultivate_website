@@ -1,33 +1,49 @@
 import { Injectable } from '@angular/core';
 
-//import { TEAM } from '../data/team.data';
+import { LABS } from '../data/labs.data';
+import { Person, TeamService } from './team.service';
 
 export class Lab {
     uuid: string;
     name: string;
+    type: string; // theoretically we might have events that aren't classes?
 
-    date?: string;
-    dates?: string[];
+    dates: string[]; // ISO 8601 - '2016-11-07'
+    times: string[]; // ISO 8601, include timezone - '17:30:00-500' is 5:30 PM Eastern
+    durations: number[]; // in minutes
+    // these things are arrays, in case this item repeats irregularly
+    // they should be the same length - if there are multiple dates and only one time and duration,
+    // we can assume that this event is the same time and duration on each date
 
-    time: string;
-    duration: number;
-    price: number;
+    // I'm pretty sure that if these arrays are bigger than one, the repeatType needs to be 0 (or not set)
+
+    // note that the intention here is not for multiple offerings of the same one-off class, 
+    //  but multiple sessions of a single class that happen on different days or times
+
+    price: number; // USD
+
+    // TODO: do we need a SKU or something for purchasing?
+
     blurb: string;
     description: string;
-    location: string;
+    
+    location?: string; // leave blank to default to "The Studio"
 
     teacherKey: string;
-    theme: string;
+
     // TODO: add tags
+    // TODO: a "theme" field?
+    // TODO: a "who is this for" field?
 
     image?: string;
 
-    spaces: number;
-    spacesSold: number;
+    spaces?: number; // number of seats total
+    minSpaces?: number; // number required to go
+    spacesSold?: number; // number of seats sold
 
     repeatType?: number; // see below
-    repeatCount?: number; // 0 for indefinite
-    repeatInterval?: number; // every [interval] days, weeks, etc
+    sessionCount?: number; // total number of sessions - if repeatType is set, 0 is indefinite
+    repeatInterval?: number; // every [interval] days, weeks, etc (0 is treated as 'every')
 }
 
 /**
@@ -44,14 +60,45 @@ export class Lab {
 export class LabService {
     private labs: Lab[] = [];
 
-    constructor() { }
+    constructor(
+        private teamService: TeamService
+    ) { }
 
     private _labPromise: Promise<Lab[]>;
     getLabs(): Promise<Lab[]> {
         if (!this._labPromise) {
-            //this._labPromise = Promise.resolve(TEAM);
+            this._labPromise = new Promise<Lab[]>((resolve, reject) => {
+                this.labs = LABS;
+                this.labs.sort((lab1, lab2) => {
+                    let val1 = lab1.dates[0];
+                    let val2 = lab2.dates[0];
+                    if (val1 > val2) {
+                        return 1;
+                    }
+                    if (val1 < val2) {
+                        return -1;
+                    }
+                    return 0;
+                });
+                resolve(this.labs);
+            });
         }
         return this._labPromise;
+    }
+
+    getClasses(): Promise<Lab[]> {
+        return new Promise<Lab[]>((resolve, reject) => {
+            let classes: Lab[] = [];
+            this.getLabs().then(labs => {
+                labs.forEach(lab => {
+                    // TODO: make this an enum?
+                    if (lab.type == "class") {
+                        classes.push(lab);
+                    }
+                });
+                resolve(classes);
+            });
+        });
     }
 
     getLab(uuid: string): Promise<Lab> {

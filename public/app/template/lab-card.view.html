@@ -1,0 +1,26 @@
+<h4>{{lab.name}}</h4>
+
+<div class="metadata">
+
+    <span *ngIf="lab.price">${{lab.price}}</span>
+
+    <span *ngIf="teacher">with {{teacher.firstName}} {{teacher.lastName}}</span>
+
+    <span *ngIf="sessionString">{{sessionString}}</span>
+    <span *ngIf="!lab.repeatType && lab.dates.length > 1">{{lab.dates.length}} sessions</span>
+    
+    <!--
+
+    <span *ngIf="lab.repeatType && lab.sessionCount">{{lab.sessionCount}} sessions</span>
+    <span *ngIf="repeatString">meets {{repeatString}}</span>
+
+    <span *ngFor="let date of dates; let i = index">
+        {{date}}
+    </span>
+
+    <span *ngIf="time">{{time}}</span>
+    -->
+
+</div>
+
+<p>{{lab.blurb}}</p>

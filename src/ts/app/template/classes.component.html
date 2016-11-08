@@ -6,6 +6,17 @@
 
         <h2>our classes</h2>
 
+        <p>Tumeric man bun kombucha, deep v try-hard pinterest 90's four dollar toast 3 wolf moon prism truffaut semiotics migas. Single-origin coffee affogato brooklyn meggings pour-over tumeric, small batch chillwave pickled synth mumblecore asymmetrical celiac. Cronut banjo beard semiotics pok pok quinoa poke. Cray offal put a bird on it, coloring book beard hella lumbersexual enamel pin. Bushwick farm-to-table cliche fanny pack vaporware. Portland williamsburg master cleanse, trust fund kombucha lumbersexual pork belly truffaut distillery schlitz gluten-free af flexitarian messenger bag. Roof party blog vice master cleanse mixtape, actually street art next level slow-carb meggings fam hot chicken dreamcatcher gochujang synth.</p>
+    
+        <div class="grid">
+
+            <div *ngFor="let class of classes"
+                class="model lab-card content-item clickable"
+                [lab]="class"
+                (click)="clickLab(class)"></div>
+
+        </div>
+
     </div>
 
 </div>

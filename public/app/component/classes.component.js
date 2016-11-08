@@ -10,14 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var app_component_1 = require("./app.component");
+var lab_service_1 = require("../service/lab.service");
 var ClassesComponent = (function () {
-    function ClassesComponent(_app) {
+    function ClassesComponent(_app, labService) {
         this._app = _app;
+        this.labService = labService;
+        this.classes = [];
     }
     ClassesComponent.prototype.ngOnInit = function () {
+        this.loadClasses();
     };
     ClassesComponent.prototype.onScroll = function (scrollpos) {
         this.scrollpos = scrollpos;
+    };
+    ClassesComponent.prototype.loadClasses = function () {
+        var _this = this;
+        this.labService.getClasses().then(function (classes) { return _this.classes = classes; });
     };
     ClassesComponent = __decorate([
         core_1.Component({
@@ -25,7 +33,7 @@ var ClassesComponent = (function () {
             selector: 'cultivate-classes',
             templateUrl: '../template/classes.component.html'
         }), 
-        __metadata('design:paramtypes', [app_component_1.AppComponent])
+        __metadata('design:paramtypes', [app_component_1.AppComponent, lab_service_1.LabService])
     ], ClassesComponent);
     return ClassesComponent;
 }());

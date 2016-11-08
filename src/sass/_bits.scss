@@ -90,6 +90,11 @@
         font-size: 0.8em;
     }
 
+    p {
+        margin: 0 2% 2%;
+        font-style: italic;
+    }
+
     .image-wrapper {
         width: 100%;
         position: relative;
@@ -117,6 +122,12 @@
         }
     }
 
+    @include md-elevation-transition();
+    @include md-elevation(0);
+    &:hover {
+        @include md-elevation(8);
+    }
+
     @media #{$media-mobile} {
         flex-basis: 48%;
 
@@ -132,4 +143,49 @@
 .headshot {
     width: 25%;
     margin-right: 5%;
+}
+
+.lab-card {
+    flex-basis: 48%;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    h4 {
+        margin: 2%;
+    }
+
+    .metadata {
+        margin: 0 2% 2%;
+    }
+}
+
+.metadata {
+    &.right {
+        text-align: right;
+    }
+
+    span {
+        display: inline-block;
+        vertical-align: middle;
+        line-height: 1.2em;
+        font-weight: bold;
+
+        &:last-child {
+            border-right: 0px;
+            margin-right: 0px;
+            padding-right: 0px;
+        }
+
+        &:not(:last-child):after {
+            content: "\2022";
+            margin: 0 $metadata-spacing 0 ($metadata-spacing * 2)
+        }
+    }
+
+    i {
+        width: 16px;
+        height: 14px;
+        text-align: center;
+        display: inline-block;
+    }
 }
