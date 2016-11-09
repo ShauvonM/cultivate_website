@@ -59,6 +59,11 @@
         .columns {
             .metadata {
                 text-align: right;
+
+                @media #{$media-mobile} {
+                    text-align: center;
+                    margin-bottom: $content-item-vertical-margin;
+                }
             }
         }
 
