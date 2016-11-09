@@ -29,6 +29,31 @@ h2, h3, h4, h5, p, button, .content-item {
     margin: 0 $content-item-horizontal-margin $content-item-vertical-margin;
 }
 
+h2 {
+    text-align: center;
+    font-size: 3em;
+    font-family: $font-cursive;
+
+    @media #{$media-mobile} {
+        font-size: 2.5em;
+    }
+}
+
+h3 {
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 1.7em;
+}
+
+hr {
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid $color-hr;
+    margin: 1em 0;
+    padding: 0; 
+}
+
 em {
     font-style: italic;
 }
@@ -46,7 +71,9 @@ cultivate {
 
 }
 
+@import "icons";
 @import "bits";
 @import "nav";
 @import "page";
 @import "home";
+@import "calendar";

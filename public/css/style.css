@@ -63,6 +63,27 @@ a {
 h2, h3, h4, h5, p, button, .content-item {
   margin: 0 0 5vw; }
 
+h2 {
+  text-align: center;
+  font-size: 3em;
+  font-family: "Reenie Beanie", cursive; }
+  @media only screen and (max-width: 500px) {
+    h2 {
+      font-size: 2.5em; } }
+
+h3 {
+  font-size: 1em;
+  font-weight: bold;
+  line-height: 1.7em; }
+
+hr {
+  display: block;
+  height: 1px;
+  border: 0;
+  border-top: 1px solid #e5e5e5;
+  margin: 1em 0;
+  padding: 0; }
+
 em {
   font-style: italic; }
 
@@ -72,6 +93,171 @@ strong {
 img {
   max-width: 100%;
   margin: 0 auto 5vw auto; }
+
+.icon {
+  background-image: url("/images/icon.spritesheet.png");
+  background-repeat: no-repeat;
+  display: block; }
+
+.icon-amp {
+  width: 40px;
+  height: 40px;
+  background-position: -5px -5px; }
+
+.icon-book {
+  width: 40px;
+  height: 40px;
+  background-position: -55px -5px; }
+
+.icon-box {
+  width: 40px;
+  height: 40px;
+  background-position: -105px -5px; }
+
+.icon-branch {
+  width: 40px;
+  height: 40px;
+  background-position: -155px -5px; }
+
+.icon-briefcase {
+  width: 40px;
+  height: 40px;
+  background-position: -205px -5px; }
+
+.icon-brush {
+  width: 40px;
+  height: 40px;
+  background-position: -5px -55px; }
+
+.icon-bulb {
+  width: 40px;
+  height: 40px;
+  background-position: -55px -55px; }
+
+.icon-camera {
+  width: 40px;
+  height: 40px;
+  background-position: -105px -55px; }
+
+.icon-candles {
+  width: 40px;
+  height: 40px;
+  background-position: -155px -55px; }
+
+.icon-chair {
+  width: 40px;
+  height: 40px;
+  background-position: -205px -55px; }
+
+.icon-coffee {
+  width: 40px;
+  height: 40px;
+  background-position: -5px -105px; }
+
+.icon-down {
+  width: 40px;
+  height: 40px;
+  background-position: -55px -105px; }
+
+.icon-dude {
+  width: 40px;
+  height: 40px;
+  background-position: -105px -105px; }
+
+.icon-ear {
+  width: 40px;
+  height: 40px;
+  background-position: -155px -105px; }
+
+.icon-exclamation {
+  width: 40px;
+  height: 40px;
+  background-position: -205px -105px; }
+
+.icon-eye {
+  width: 40px;
+  height: 40px;
+  background-position: -5px -155px; }
+
+.icon-film {
+  width: 40px;
+  height: 40px;
+  background-position: -55px -155px; }
+
+.icon-hammer {
+  width: 40px;
+  height: 40px;
+  background-position: -105px -155px; }
+
+.icon-hoe {
+  width: 40px;
+  height: 40px;
+  background-position: -155px -155px; }
+
+.icon-key {
+  width: 40px;
+  height: 40px;
+  background-position: -205px -155px; }
+
+.icon-magnify {
+  width: 40px;
+  height: 40px;
+  background-position: -5px -205px; }
+
+.icon-mask {
+  width: 40px;
+  height: 40px;
+  background-position: -55px -205px; }
+
+.icon-megaphone {
+  width: 40px;
+  height: 40px;
+  background-position: -105px -205px; }
+
+.icon-plant {
+  width: 40px;
+  height: 40px;
+  background-position: -155px -205px; }
+
+.icon-question {
+  width: 40px;
+  height: 40px;
+  background-position: -205px -205px; }
+
+.icon-smile {
+  width: 40px;
+  height: 40px;
+  background-position: -255px -5px; }
+
+.icon-speech {
+  width: 40px;
+  height: 40px;
+  background-position: -255px -55px; }
+
+.icon-spotlight {
+  width: 40px;
+  height: 40px;
+  background-position: -255px -105px; }
+
+.icon-star {
+  width: 40px;
+  height: 40px;
+  background-position: -255px -155px; }
+
+.icon-thought {
+  width: 40px;
+  height: 40px;
+  background-position: -255px -205px; }
+
+.icon-up {
+  width: 40px;
+  height: 40px;
+  background-position: -5px -255px; }
+
+.icon-wrench {
+  width: 40px;
+  height: 40px;
+  background-position: -55px -255px; }
 
 .error {
   color: darkred; }
@@ -118,7 +304,8 @@ img {
   text-decoration: none;
   font-weight: bold;
   border-radius: 4px;
-  margin-bottom: 5vw; }
+  margin-bottom: 5vw;
+  cursor: pointer; }
   @media only screen and (max-width: 500px) {
     .button {
       padding: 2vw; } }
@@ -137,6 +324,46 @@ img {
   flex-direction: column;
   width: 100%; }
 
+.columns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%; }
+  .columns .metadata {
+    flex-basis: 26%;
+    margin-right: 4%; }
+  .columns .content {
+    flex-basis: 70%; }
+  @media only screen and (max-width: 500px) {
+    .columns {
+      flex-direction: column; }
+      .columns .metadata {
+        flex-basis: 100%;
+        margin: 0; }
+      .columns .content {
+        flex-basis: 100%; } }
+
+.content p {
+  margin-bottom: 2.5vw; }
+
+.left, .right {
+  flex-basis: 49%; }
+
+.badge {
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+  padding: 5px;
+  background-color: #FFFFFF; }
+
+.person {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+  .person .metadata img {
+    margin: 0; }
+  .person .metadata h5 {
+    text-align: center; }
+
 .model {
   flex-basis: 30%;
   margin: 0 0 5% 0;
@@ -145,12 +372,11 @@ img {
   justify-content: space-between;
   border: 1px solid #e5e5e5;
   border-radius: 4px;
-  overflow: hidden;
   align-items: center;
   transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
   will-change: box-shadow;
   box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12); }
-  .model h4 {
+  .model h2, .model h4 {
     font-size: 2em;
     margin: 0 2%;
     font-family: "Reenie Beanie", cursive; }
@@ -182,7 +408,7 @@ img {
     .model {
       flex-basis: 48%; }
       .model h4 {
-        font-size: 1.2em; }
+        font-size: 2em; }
       .model h5 {
         font-size: 1.2em; } }
 
@@ -196,11 +422,28 @@ img {
   justify-content: flex-start;
   border-radius: 0;
   padding: 1vw;
-  border-bottom: 0px; }
+  padding-left: 2vw;
+  border-bottom: 0px;
+  margin: 0px;
+  position: relative; }
   .lab-card h4 {
-    margin: 2%; }
+    margin: 2%;
+    color: #6fab33; }
   .lab-card .metadata {
     margin: 0 2% 2%; }
+  .lab-card .badge {
+    position: absolute;
+    top: 1vw;
+    left: -25px;
+    z-index: 5;
+    margin-top: 7px;
+    box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+    transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+    will-change: box-shadow; }
+    @media only screen and (max-width: 500px) {
+      .lab-card .badge {
+        left: auto;
+        right: -25px; } }
   .lab-card:first-child {
     border-radius: 4px 4px 0 0; }
   .lab-card:last-child {
@@ -208,6 +451,8 @@ img {
     border-radius: 0 0 4px 4px; }
   .lab-card:hover {
     border-radius: 4px; }
+    .lab-card:hover .badge {
+      box-shadow: 0px 5px 5px -3px rgba(0, 0, 0, 0.2), 0px 8px 10px 1px rgba(0, 0, 0, 0.14), 0px 3px 14px 2px rgba(0, 0, 0, 0.12); }
 
 .metadata.right {
   text-align: right; }
@@ -230,6 +475,10 @@ img {
   height: 14px;
   text-align: center;
   display: inline-block; }
+
+.metadata h3, .metadata .content-item {
+  margin-bottom: 0;
+  line-height: 1.2em; }
 
 nav {
   position: fixed;
@@ -422,13 +671,10 @@ footer {
         margin-top: 0; } }
     .page .material > *:last-child {
       margin-bottom: 5vw !important; }
-    .page .material h2 {
-      text-align: center;
-      font-size: 3em;
-      font-family: "Reenie Beanie", cursive; }
-      @media only screen and (max-width: 500px) {
-        .page .material h2 {
-          font-size: 2.5em; } }
+    .page .material .columns .metadata {
+      text-align: right; }
+    .page .material .price {
+      font-size: 2em; }
     .page .material p {
       line-height: 1.7em; }
 
@@ -437,5 +683,94 @@ cultivate-home nav {
 
 cultivate-home .page {
   padding-top: 87.5vh; }
+
+cultivate-calendar .page .material {
+  padding-left: 0px;
+  padding-right: 0px; }
+  cultivate-calendar .page .material .cal-control {
+    font-size: 2em;
+    font-family: "Reenie Beanie", cursive;
+    padding: 0.5vw 1vw; }
+
+.month {
+  font-size: 1.2em;
+  margin: -2vw 0 1vw 0; }
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  width: 100%; }
+  .calendar .week {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap; }
+    .calendar .week .day {
+      border-style: solid;
+      border-width: 1px 1px 0 0;
+      border-color: #e5e5e5;
+      box-sizing: border-box;
+      flex: 1 1;
+      position: relative; }
+      .calendar .week .day:before {
+        /* makes it square! */
+        content: "";
+        display: block;
+        padding-top: 100%; }
+      .calendar .week .day:first-child {
+        border-left-width: 1px; }
+      .calendar .week .day .today {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        box-shadow: 0px 0px 2px #6fab33 inset; }
+      .calendar .week .day .content {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        display: flex;
+        flex-direction: column; }
+        .calendar .week .day .content .date {
+          align-self: flex-end;
+          padding: 5px 5px 5px 0; }
+        .calendar .week .day .content .lab {
+          padding: 5px;
+          border-radius: 2px;
+          box-sizing: border-box;
+          font-size: 0.8em;
+          color: #ffa70f;
+          overflow: hidden;
+          width: 100%;
+          transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+          will-change: box-shadow;
+          box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12); }
+          .calendar .week .day .content .lab:hover {
+            box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); }
+          .calendar .week .day .content .lab .name {
+            width: 100%;
+            box-sizing: border-box;
+            white-space: nowrap;
+            text-overflow: ellipsis;
+            overflow: hidden;
+            line-height: 1.1em;
+            display: block; }
+          .calendar .week .day .content .lab i {
+            display: inline-block; }
+          .calendar .week .day .content .lab:hover {
+            background: #FFF; }
+            .calendar .week .day .content .lab:hover .name {
+              white-space: normal; }
+    .calendar .week.header .day {
+      border: 0px;
+      padding: 0 0 0 10px; }
+      .calendar .week.header .day:before {
+        display: none; }
+    .calendar .week:last-child .day {
+      border-bottom-width: 1px; }
+      .calendar .week:last-child .day:first-child {
+        border-left-width: 1px; }
 
 /*# sourceMappingURL=style.css.map */

@@ -15,6 +15,7 @@ import { TeacherDetailsComponent } from '../component/teacher-details.component'
 import { LabDetailsComponent } from '../component/lab-details.component';
 
 import { NavView } from '../view/nav.view';
+import { PersonView } from '../view/person.view';
 import { LabCardView } from '../view/lab-card.view';
 
 import { TeamService } from '../service/team.service';
@@ -41,6 +42,7 @@ import { AppRoutingModule } from './app-routing.module';
         LabDetailsComponent,
 
         NavView,
+        PersonView,
         LabCardView
     ],
     bootstrap: [ AppComponent ],

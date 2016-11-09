@@ -1,0 +1,136 @@
+@import "vars";
+@import "elevation";
+
+$calendar-content-padding: 5px;
+
+cultivate-calendar {
+    .page .material {
+        padding-left: 0px;
+        padding-right: 0px;
+
+        .cal-control {
+            font-size: 2em;
+            font-family: $font-cursive;
+            padding: $content-padding / 2 $content-padding;
+        }
+    }
+}
+
+.month {
+    font-size: 1.2em;
+    margin: -$content-spacing*2 0 $content-spacing 0;
+}
+
+.calendar {
+
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .week {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+
+        .day {
+            border-style: solid;
+            border-width: 1px 1px 0 0;
+            border-color: $color-hr;
+            box-sizing: border-box;
+            flex: 1 1;
+            position: relative;
+
+            &:before {
+                /* makes it square! */
+                content: "";
+                display: block;
+                padding-top: 100%;
+            }
+
+            &:first-child {
+                border-left-width: 1px;
+            }
+
+            .today {
+                @include abs(0,0,0,0);
+                box-shadow: 0px 0px 2px $color-primary inset;
+            }
+
+            .content {
+                @include abs(0,0,0,0);
+                display: flex;
+                flex-direction: column;
+
+                .date {
+                    align-self: flex-end;
+                    padding: $calendar-content-padding $calendar-content-padding $calendar-content-padding 0;
+                }
+
+                .lab {
+                    padding: $calendar-content-padding;
+                    border-radius: $border-radius;
+                    box-sizing: border-box;
+                    font-size: 0.8em;
+                    color: $color-secondary;
+                    overflow: hidden;
+                    width: 100%;
+                    
+                    @include md-elevation-transition();
+                    @include md-elevation(0);
+
+                    &:hover {
+                        @include md-elevation(4);
+                    }
+
+                    .name {
+                        width: 100%;
+                        box-sizing: border-box;
+                        white-space: nowrap;
+                        text-overflow: ellipsis;
+                        overflow: hidden;
+                        line-height: 1.1em;
+                        display: block;
+                    }
+
+                    i {
+                        display: inline-block;
+                    }
+
+                    &:hover {
+                        background: #FFF;
+
+                        .name {
+                            white-space: normal;
+                        }
+                    }
+
+                }
+            }
+
+
+        }
+
+        &.header {
+            .day {
+                border: 0px;
+                padding: 0 0 0 10px;
+
+                &:before {
+                    display: none;
+                }
+            }
+        }
+
+        &:last-child {
+            .day {
+                border-bottom-width: 1px;
+
+                &:first-child {
+                    border-left-width: 1px
+                }
+            }
+        }
+
+    }
+
+}

@@ -4,7 +4,63 @@
 
     <div class="material">
 
-        <h2>calendar</h2>
+        <div class="grid">
+            <div class="button cal-control" (click)="prevMonth()">&lt;</div>
+
+            <h2>calendar</h2>
+
+            <div class="button cal-control" (click)="nextMonth()">&gt;</div>
+        </div>
+
+        <div class="month">{{month}}</div>
+
+        <div class="calendar">
+
+            <div class="week header">
+                
+                <div class="day">Sun</div>
+                
+                <div class="day">Mon</div>
+                
+                <div class="day">Tue</div>
+                
+                <div class="day">Wed</div>
+                
+                <div class="day">Thu</div>
+                
+                <div class="day">Fri</div>
+                
+                <div class="day">Sat</div>
+
+            </div>
+
+            <div class="week" *ngFor="let week of dateInfo">
+                
+                <div class="day" *ngFor="let day of week"
+                    [class.outside]="day.date == 0">
+                    <div class="today" *ngIf="day.today"></div>
+
+                    <div class="content" *ngIf="day.date > 0">
+                        <span class="date">{{day.date}}</span>
+
+                        <div
+                            *ngFor="let lab of day.labs"
+                            class="lab clickable"
+                            [class.has-icon]="lab.icon && day.labs.length == 1"
+                            (click)="clickLab(lab)">
+                            
+                            <span class="time" [innerHTML]="getShortTimeString(lab)"></span>
+                            <i [class]="'icon icon-' + lab.icon" *ngIf="lab.icon && day.labs.length == 1"></i>
+                            <span class="name">{{lab.name}}</span>
+
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
 
     </div>
 

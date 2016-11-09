@@ -52,6 +52,7 @@
     font-weight: bold;
     border-radius: $border-radius * 2;
     margin-bottom: $content-item-vertical-margin;
+    cursor: pointer;
 
     @media #{$media-mobile} {
         padding: $content-padding * 2;
@@ -75,6 +76,65 @@
     width: 100%;
 }
 
+.columns {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+
+    .metadata {
+        flex-basis: 26%;
+        margin-right: 4%;
+    }
+    .content {
+        flex-basis: 70%;
+    }
+
+    @media #{$media-mobile} {
+        flex-direction: column;
+
+        .metadata {
+            flex-basis: 100%;
+            margin: 0;
+        }
+        .content {
+            flex-basis: 100%;
+        }
+    }
+}
+
+.content {
+    p {
+        margin-bottom: $content-item-vertical-margin / 2;
+    }
+}
+
+.left, .right {
+    flex-basis: 49%;
+}
+
+.badge {
+    border: 1px solid $color-hr;
+    border-radius: 50%;
+    padding: 5px;
+    background-color: $color-material-bg;
+}
+
+.person {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .metadata {
+        img {
+            margin: 0;
+        }
+        h5 {
+            text-align: center;
+        }
+    }
+}
+
 .model {
     flex-basis: 30%;
     margin: 0 0 5% 0;
@@ -83,10 +143,9 @@
     justify-content: space-between;
     border: 1px solid $color-hr;
     border-radius: $border-radius * 2;
-    overflow: hidden;
     align-items: center;
 
-    h4 {
+    h2, h4 {
         font-size: 2em;
         margin: 0 2%;
         font-family: $font-cursive;
@@ -137,7 +196,7 @@
         flex-basis: 48%;
 
         h4 {
-            font-size: 1.2em;
+            font-size: 2em;
         }
         h5 {
             font-size: 1.2em;
@@ -156,14 +215,30 @@
     justify-content: flex-start;
     border-radius: 0;
     padding: $content-padding;
+    padding-left: $content-padding * 2;
     border-bottom: 0px;
+    margin: 0px;
+    position: relative;
 
     h4 {
         margin: 2%;
+        color: $color-primary;
     }
 
     .metadata {
         margin: 0 2% 2%;
+    }
+
+    .badge {
+        @include abs(1vw, null, null, -25px, 5);
+        margin-top: 7px;
+        @include md-elevation(0);
+        @include md-elevation-transition();
+
+        @media #{$media-mobile} {
+            left: auto;
+            right: -25px;
+        }
     }
 
     &:first-child {
@@ -176,6 +251,10 @@
 
     &:hover {
         border-radius: $border-radius * 2;
+
+        .badge {
+            @include md-elevation(8);
+        }
     }
 }
 
@@ -207,5 +286,10 @@
         height: 14px;
         text-align: center;
         display: inline-block;
+    }
+
+    h3, .content-item {
+        margin-bottom: 0;
+        line-height: 1.2em;
     }
 }

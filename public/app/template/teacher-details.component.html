@@ -6,19 +6,9 @@
 
         <a href="#" (click)="goBack()" class="left content-item">&lt; <em>View the whole Cultivate Team</em></a>
 
-        <h2>{{person.firstName}} {{person.lastName}}</h2>
-
-        <h5 *ngIf="person.title">{{person.title}}</h5>
-
-        <h5 *ngIf="!person.title">Teacher</h5>
-        
-        <div>
-            <img [src]="'/images/headshots/' + person.key + '.jpg'" class="pull-left headshot" />
-
-            <div class="bio content-item" [innerHTML]="person.bio"></div>
-        </div>
-
-        <a *ngIf="person.website" class="button" [href]="person.website">Visit {{person.firstName}} Online</a>
+        <div class="person"
+            [person]="person"
+            [large]="true"></div>
     
     </div>
 

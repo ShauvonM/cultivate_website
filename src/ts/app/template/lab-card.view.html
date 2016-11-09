@@ -8,19 +8,9 @@
 
     <span *ngIf="sessionString">{{sessionString}}</span>
     <span *ngIf="!lab.repeatType && lab.dates.length > 1">{{lab.dates.length}} sessions</span>
-    
-    <!--
-
-    <span *ngIf="lab.repeatType && lab.sessionCount">{{lab.sessionCount}} sessions</span>
-    <span *ngIf="repeatString">meets {{repeatString}}</span>
-
-    <span *ngFor="let date of dates; let i = index">
-        {{date}}
-    </span>
-
-    <span *ngIf="time">{{time}}</span>
-    -->
 
 </div>
 
 <p>{{lab.blurb}}</p>
+
+<div *ngIf="lab.icon" class="badge"><i [class]="'icon icon-' + lab.icon"></i></div>

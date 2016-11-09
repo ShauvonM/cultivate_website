@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 var core_1 = require('@angular/core');
 var labs_data_1 = require('../data/labs.data');
 var team_service_1 = require('./team.service');
+var date_utils_1 = require('../util/date.utils');
 var Lab = (function () {
     function Lab() {
     }
@@ -36,17 +37,13 @@ var LabService = (function () {
         return new Promise(function (resolve, reject) {
             _this._getLabs().then(function (labs) {
                 var classes = [];
-                if (format == "all") {
-                    classes = _this.labs;
-                }
-                else {
-                    _this.labs.forEach(function (lab) {
-                        // TODO: make this an enum?
-                        if (lab.format == format) {
-                            classes.push(lab);
-                        }
-                    });
-                }
+                _this.labs.forEach(function (lab) {
+                    // TODO: make this an enum?
+                    if ((format == "all" || lab.format == format)
+                        && !lab.inactive) {
+                        classes.push(lab);
+                    }
+                });
                 classes.sort(function (lab1, lab2) {
                     var val1 = lab1.dates[0];
                     var val2 = lab2.dates[0];
@@ -71,6 +68,55 @@ var LabService = (function () {
             });
         }
         return this._labPromise;
+    };
+    LabService.prototype.getLabsForDate = function (date) {
+        var _this = this;
+        var dateLabs = [];
+        this.labs.forEach(function (lab) {
+            // do a bit of searching just to see if we even need to check the dates
+            if (lab.repeatType) {
+                if (date.isBefore(date_utils_1.default.getStartMomentForLab(lab), 'day')) {
+                    // it starts in the future, so we can skip it
+                    return true; // this skips to the next item in the foreEach
+                }
+                else if (lab.sessionCount && date.isAfter(date_utils_1.default.getEndMomentForLab(lab), 'day')) {
+                    // the lab ended in the past, so we can skip it
+                    return true;
+                }
+            }
+            if (_this.isLabOnDate(lab, date)) {
+                dateLabs.push(lab);
+            }
+        });
+        return dateLabs;
+    };
+    LabService.prototype.isLabOnDate = function (lab, date) {
+        if (lab.repeatType && !lab.sessionCount) {
+            var startMoment = date_utils_1.default.getStartMomentForLab(lab);
+            if (date.isBefore(startMoment, "day")) {
+                return false;
+            }
+            // if it's an endless repeat, we can just check it against the day it regularly happens
+            switch (lab.repeatType) {
+                case 1:
+                    // it happens every day, so yes it happens today
+                    return true;
+                case 2:
+                    return date_utils_1.default.getStartMomentForLab(lab).day() == date.day();
+                case 3:
+                    return date_utils_1.default.getStartMomentForLab(lab).date() == date.date();
+                case 4:
+                    var weekInMonth = date_utils_1.default.getWeekInMonth(startMoment);
+                    var dayInWeek = startMoment.day();
+                    return date_utils_1.default.getWeekInMonth(date) == weekInMonth
+                        && date.day() == dayInWeek;
+                case 5:
+                    return startMoment.format("MM-DD") == date.format("MM-DD");
+            }
+        }
+        else {
+            return date_utils_1.default.getAllDatesForLab(lab).indexOf(date_utils_1.default.getISODate(date)) > -1;
+        }
     };
     LabService.prototype.getLab = function (uuid) {
         var _this = this;

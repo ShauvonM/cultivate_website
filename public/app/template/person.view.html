@@ -1,0 +1,19 @@
+<div *ngIf="!large" class="image-wrapper">
+    <img [src]="'/images/headshots/' + person.key + '.jpg'" />
+</div>
+
+<h2>{{person.firstName}} {{person.lastName}}</h2>
+
+<h5 *ngIf="person.title && !large">{{person.title}}</h5>
+
+<div *ngIf="large" class="columns">
+    <div class="metadata">
+        <img [src]="'/images/headshots/' + person.key + '.jpg'" />
+
+        <h5 *ngIf="person.title">{{person.title}}</h5>
+    </div>
+
+    <div class="bio content" [innerHTML]="person.bio"></div>
+</div>
+
+<a *ngIf="large && person.website" class="button" [href]="person.website">Visit {{person.firstName}} Online</a>

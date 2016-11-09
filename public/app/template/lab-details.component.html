@@ -4,11 +4,45 @@
 
     <div class="material" *ngIf="lab">
 
-        <a href="#" (click)="goBack()" class="left content-item">&lt; <em>View all available classes</em></a>
+        <a href="#" (click)="goBack()" class="left">&lt; <em>View all available classes</em></a>
+        
+        <div class="badge content-item">
+            <i [class]="'icon icon-' + (lab.icon || 'bulb')"></i>
+        </div>
+
 
         <h2>{{lab.name}}</h2>
-        
-        
+
+        <div class="columns content-item">
+            <div class="metadata">
+            
+                <h3 *ngIf="teacher">with {{teacher.firstName}} {{teacher.lastName}}</h3>
+                
+                <h3 *ngIf="lab.price" class="price">${{lab.price}}</h3>
+                <h3 *ngIf="!lab.price" class="price">Free!</h3>
+
+                <h3 *ngIf="lab.repeatType && lab.sessionCount">{{lab.sessionCount}} sessions</h3>
+                <h3 *ngIf="dates.length > 1">{{dates.length}} sessions</h3>
+
+                <h3 *ngIf="repeatString">Meets {{repeatString}}</h3>
+
+                <h3 *ngFor="let date of dates; let i = index" [innerHTML]="date"></h3>
+
+                <h3 *ngIf="time">{{time}}</h3>
+
+                <hr />
+
+                <h3>The Speaker's Studio <br />1437 Story Avenue<br /> Louisville, KY 40206</h3>
+
+            </div>
+
+            <div [innerHTML]="lab.description" class="content"></div>
+        </div> 
+
+        <div *ngIf="teacher"
+            class="person"
+            [person]="teacher"
+            [large]="true"></div>
     
     </div>
 

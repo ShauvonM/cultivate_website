@@ -20,20 +20,9 @@
             <div class="grid">
 
                 <div *ngFor="let person of data.data"
-                    class="model content-item clickable"
-                    [class.founder]="person.founder"
-                    (click)="clickPerson(person)">
-
-                    <div class="image-wrapper">
-                        <img [src]="'/images/headshots/' + person.key + '.jpg'" />
-                    </div>
-
-                    <h4>{{person.firstName}} {{person.lastName}}</h4>
-
-                    <h5 *ngIf="person.title">{{person.title}}</h5>
-                    <h5 *ngIf="!person.title">Teacher</h5>
-
-                </div>
+                    class="model person content-item clickable"
+                    [person]="person"
+                    (click)="clickPerson(person)"></div>
 
             </div>
         </div>

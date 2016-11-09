@@ -21,6 +21,7 @@ var for_teachers_component_1 = require('../component/for-teachers.component');
 var teacher_details_component_1 = require('../component/teacher-details.component');
 var lab_details_component_1 = require('../component/lab-details.component');
 var nav_view_1 = require('../view/nav.view');
+var person_view_1 = require('../view/person.view');
 var lab_card_view_1 = require('../view/lab-card.view');
 var team_service_1 = require('../service/team.service');
 var lab_service_1 = require('../service/lab.service');
@@ -46,6 +47,7 @@ var AppModule = (function () {
                 teacher_details_component_1.TeacherDetailsComponent,
                 lab_details_component_1.LabDetailsComponent,
                 nav_view_1.NavView,
+                person_view_1.PersonView,
                 lab_card_view_1.LabCardView
             ],
             bootstrap: [app_component_1.AppComponent],

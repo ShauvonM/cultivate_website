@@ -56,14 +56,14 @@
             margin-bottom: $content-item-vertical-margin !important;
         }
 
-        h2 {
-            text-align: center;
-            font-size: 3em;
-            font-family: $font-cursive;
-
-            @media #{$media-mobile} {
-                font-size: 2.5em;
+        .columns {
+            .metadata {
+                text-align: right;
             }
+        }
+
+        .price {
+            font-size: 2em;
         }
 
         p {
