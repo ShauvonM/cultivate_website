@@ -1,0 +1,15 @@
+<nav-component [large]="false" (windowScroll)="onScroll($event)"></nav-component>
+
+<div class="page">
+
+    <div class="material" *ngIf="lab">
+
+        <a href="#" (click)="goBack()" class="left content-item">&lt; <em>View all available classes</em></a>
+
+        <h2>{{lab.name}}</h2>
+        
+        
+    
+    </div>
+
+</div>

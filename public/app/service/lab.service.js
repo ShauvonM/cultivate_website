@@ -31,12 +31,23 @@ var LabService = (function () {
         this.teamService = teamService;
         this.labs = [];
     }
-    LabService.prototype.getLabs = function () {
+    LabService.prototype.getLabs = function (format) {
         var _this = this;
-        if (!this._labPromise) {
-            this._labPromise = new Promise(function (resolve, reject) {
-                _this.labs = labs_data_1.LABS;
-                _this.labs.sort(function (lab1, lab2) {
+        return new Promise(function (resolve, reject) {
+            _this._getLabs().then(function (labs) {
+                var classes = [];
+                if (format == "all") {
+                    classes = _this.labs;
+                }
+                else {
+                    _this.labs.forEach(function (lab) {
+                        // TODO: make this an enum?
+                        if (lab.format == format) {
+                            classes.push(lab);
+                        }
+                    });
+                }
+                classes.sort(function (lab1, lab2) {
                     var val1 = lab1.dates[0];
                     var val2 = lab2.dates[0];
                     if (val1 > val2) {
@@ -47,30 +58,24 @@ var LabService = (function () {
                     }
                     return 0;
                 });
+                resolve(classes);
+            });
+        });
+    };
+    LabService.prototype._getLabs = function () {
+        var _this = this;
+        if (!this._labPromise) {
+            this._labPromise = new Promise(function (resolve, reject) {
+                _this.labs = labs_data_1.LABS;
                 resolve(_this.labs);
             });
         }
         return this._labPromise;
     };
-    LabService.prototype.getClasses = function () {
-        var _this = this;
-        return new Promise(function (resolve, reject) {
-            var classes = [];
-            _this.getLabs().then(function (labs) {
-                labs.forEach(function (lab) {
-                    // TODO: make this an enum?
-                    if (lab.type == "class") {
-                        classes.push(lab);
-                    }
-                });
-                resolve(classes);
-            });
-        });
-    };
     LabService.prototype.getLab = function (uuid) {
         var _this = this;
         return new Promise(function (resolve, reject) {
-            _this.getLabs().then(function (labs) {
+            _this.getLabs("all").then(function (labs) {
                 labs.forEach(function (lab) {
                     if (lab.uuid == uuid) {
                         resolve(lab);

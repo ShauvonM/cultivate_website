@@ -9,23 +9,34 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var router_1 = require('@angular/router');
 var app_component_1 = require("./app.component");
 var lab_service_1 = require("../service/lab.service");
 var ClassesComponent = (function () {
-    function ClassesComponent(_app, labService) {
+    function ClassesComponent(_app, router, labService) {
         this._app = _app;
+        this.router = router;
         this.labService = labService;
         this.classes = [];
+        this.dropins = [];
     }
     ClassesComponent.prototype.ngOnInit = function () {
         this.loadClasses();
+        this.loadDropins();
     };
     ClassesComponent.prototype.onScroll = function (scrollpos) {
         this.scrollpos = scrollpos;
     };
     ClassesComponent.prototype.loadClasses = function () {
         var _this = this;
-        this.labService.getClasses().then(function (classes) { return _this.classes = classes; });
+        this.labService.getLabs("class").then(function (classes) { return _this.classes = classes; });
+    };
+    ClassesComponent.prototype.loadDropins = function () {
+        var _this = this;
+        this.labService.getLabs("drop-in").then(function (dropins) { return _this.dropins = dropins; });
+    };
+    ClassesComponent.prototype.clickLab = function (lab) {
+        this.router.navigate(['/classes', lab.uuid]);
     };
     ClassesComponent = __decorate([
         core_1.Component({
@@ -33,7 +44,7 @@ var ClassesComponent = (function () {
             selector: 'cultivate-classes',
             templateUrl: '../template/classes.component.html'
         }), 
-        __metadata('design:paramtypes', [app_component_1.AppComponent, lab_service_1.LabService])
+        __metadata('design:paramtypes', [app_component_1.AppComponent, router_1.Router, lab_service_1.LabService])
     ], ClassesComponent);
     return ClassesComponent;
 }());

@@ -19,6 +19,7 @@ var classes_component_1 = require('../component/classes.component');
 var calendar_component_1 = require('../component/calendar.component');
 var for_teachers_component_1 = require('../component/for-teachers.component');
 var teacher_details_component_1 = require('../component/teacher-details.component');
+var lab_details_component_1 = require('../component/lab-details.component');
 var nav_view_1 = require('../view/nav.view');
 var lab_card_view_1 = require('../view/lab-card.view');
 var team_service_1 = require('../service/team.service');
@@ -43,6 +44,7 @@ var AppModule = (function () {
                 calendar_component_1.CalendarComponent,
                 for_teachers_component_1.ForTeachersComponent,
                 teacher_details_component_1.TeacherDetailsComponent,
+                lab_details_component_1.LabDetailsComponent,
                 nav_view_1.NavView,
                 lab_card_view_1.LabCardView
             ],

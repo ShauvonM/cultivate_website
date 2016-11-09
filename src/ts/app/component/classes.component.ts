@@ -2,6 +2,7 @@ import {
     Component,
     OnInit
 } from '@angular/core';
+import { Router }   from '@angular/router';
 
 import { AppComponent } from "./app.component";
 
@@ -17,14 +18,17 @@ export class ClassesComponent implements OnInit {
     scrollpos: number;
 
     classes: Lab[] = [];
+    dropins: Lab[] = [];
 
     constructor(
         private _app: AppComponent,
+        private router: Router,
         private labService: LabService
     ) {}
 
     ngOnInit(): void {
         this.loadClasses();
+        this.loadDropins();
     }
 
     onScroll(scrollpos): void {
@@ -32,6 +36,14 @@ export class ClassesComponent implements OnInit {
     }
 
     loadClasses(): void {
-        this.labService.getClasses().then((classes) => this.classes = classes);
+        this.labService.getLabs("class").then((classes) => this.classes = classes);
+    }
+
+    loadDropins(): void {
+        this.labService.getLabs("drop-in").then((dropins) => this.dropins = dropins);
+    }
+
+    clickLab(lab: Lab): void {
+        this.router.navigate(['/classes', lab.uuid]);
     }
 }

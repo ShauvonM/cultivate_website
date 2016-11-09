@@ -12,6 +12,7 @@ import { CalendarComponent } from '../component/calendar.component';
 import { ForTeachersComponent } from '../component/for-teachers.component';
 
 import { TeacherDetailsComponent } from '../component/teacher-details.component';
+import { LabDetailsComponent } from '../component/lab-details.component';
 
 import { NavView } from '../view/nav.view';
 import { LabCardView } from '../view/lab-card.view';
@@ -37,6 +38,7 @@ import { AppRoutingModule } from './app-routing.module';
         ForTeachersComponent,
 
         TeacherDetailsComponent,
+        LabDetailsComponent,
 
         NavView,
         LabCardView

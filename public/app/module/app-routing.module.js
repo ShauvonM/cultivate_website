@@ -16,6 +16,7 @@ var classes_component_1 = require('../component/classes.component');
 var calendar_component_1 = require('../component/calendar.component');
 var for_teachers_component_1 = require('../component/for-teachers.component');
 var teacher_details_component_1 = require('../component/teacher-details.component');
+var lab_details_component_1 = require('../component/lab-details.component');
 var routes = [
     {
         path: '',
@@ -32,6 +33,10 @@ var routes = [
     {
         path: 'classes',
         component: classes_component_1.ClassesComponent
+    },
+    {
+        path: 'classes/:uuid',
+        component: lab_details_component_1.LabDetailsComponent
     },
     {
         path: 'calendar',

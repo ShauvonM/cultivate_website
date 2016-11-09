@@ -6,7 +6,7 @@ import { Person, TeamService } from './team.service';
 export class Lab {
     uuid: string;
     name: string;
-    type: string; // theoretically we might have events that aren't classes?
+    format: string; // what sort of event this is, i.e. "class" "drop-in" "meet-up"
 
     dates: string[]; // ISO 8601 - '2016-11-07'
     times: string[]; // ISO 8601, include timezone - '17:30:00-500' is 5:30 PM Eastern
@@ -64,12 +64,21 @@ export class LabService {
         private teamService: TeamService
     ) { }
 
-    private _labPromise: Promise<Lab[]>;
-    getLabs(): Promise<Lab[]> {
-        if (!this._labPromise) {
-            this._labPromise = new Promise<Lab[]>((resolve, reject) => {
-                this.labs = LABS;
-                this.labs.sort((lab1, lab2) => {
+    getLabs(format: string): Promise<Lab[]> {
+        return new Promise<Lab[]>((resolve, reject) => {
+            this._getLabs().then((labs) => {
+                let classes: Lab[] = [];
+                if (format == "all") {
+                    classes = this.labs;
+                } else {
+                    this.labs.forEach(lab => {
+                        // TODO: make this an enum?
+                        if (lab.format == format) {
+                            classes.push(lab);
+                        }
+                    });
+                }
+                classes.sort((lab1, lab2) => {
                     let val1 = lab1.dates[0];
                     let val2 = lab2.dates[0];
                     if (val1 > val2) {
@@ -80,30 +89,25 @@ export class LabService {
                     }
                     return 0;
                 });
+                resolve(classes);
+            })
+        })
+    }
+
+    private _labPromise: Promise<Lab[]>;
+    private _getLabs(): Promise<Lab[]> {
+        if (!this._labPromise) {
+            this._labPromise = new Promise<Lab[]>((resolve, reject) => {
+                this.labs = LABS;
                 resolve(this.labs);
             });
         }
         return this._labPromise;
     }
 
-    getClasses(): Promise<Lab[]> {
-        return new Promise<Lab[]>((resolve, reject) => {
-            let classes: Lab[] = [];
-            this.getLabs().then(labs => {
-                labs.forEach(lab => {
-                    // TODO: make this an enum?
-                    if (lab.type == "class") {
-                        classes.push(lab);
-                    }
-                });
-                resolve(classes);
-            });
-        });
-    }
-
     getLab(uuid: string): Promise<Lab> {
         return new Promise<Lab>((resolve, reject) => {
-            this.getLabs().then((labs) => {
+            this.getLabs("all").then((labs) => {
                 labs.forEach((lab) => {
                     if (lab.uuid == uuid) {
                         resolve(lab);

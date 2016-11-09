@@ -3,7 +3,7 @@ exports.LABS = [
     {
         uuid: "bb0245b1-f068-4ee1-b85c-458ea161bc35",
         name: "Placeholder Class 1: Intro to Placeholders",
-        type: "class",
+        format: "class",
         dates: ["2016-12-05"],
         times: ["16:30-05:00"],
         durations: [90],
@@ -20,7 +20,7 @@ exports.LABS = [
     {
         uuid: "9a2aad7a-fd62-41c6-98a8-2d2fd007d254",
         name: "Placeholder Class 2: Intensive Placeholder Study",
-        type: "class",
+        format: "class",
         dates: ["2016-12-07"],
         times: ["09:00-05:00"],
         durations: [180],
@@ -35,7 +35,7 @@ exports.LABS = [
     {
         uuid: "f3a1d04d-6a3c-44c9-92ea-0e7e7c6c1202",
         name: "Director's Cut: Not Everybody Wants to Direct",
-        type: "class",
+        format: "class",
         dates: ["2016-11-19"],
         times: ["10:00-05:00"],
         durations: [180],
@@ -50,7 +50,7 @@ exports.LABS = [
     {
         uuid: "54d8efc3-f6f3-478e-8fbc-556192508a6a",
         name: "Stage to Page",
-        type: "class",
+        format: "class",
         dates: ["2016-12-29"],
         times: ["16:00-05:00"],
         durations: [120],
@@ -67,7 +67,7 @@ exports.LABS = [
     {
         uuid: "f4b2e355-ed26-4201-b051-86dd9f421e98",
         name: "Mock Auditions: Commercials",
-        type: "class",
+        format: "class",
         dates: ["2016-12-07"],
         times: ["13:00-05:00"],
         durations: [240],
@@ -82,7 +82,7 @@ exports.LABS = [
     {
         uuid: "be82eab8-a4cd-4ea2-811d-43dc630b6363",
         name: "Placeholder Class 3: Multiple Session Placeholders!",
-        type: "class",
+        format: "class",
         dates: ["2016-12-07", "2016-12-09", "2016-12-12"],
         times: ["09:00-05:00", "10:00-05:00", "11:00-05:00"],
         durations: [180, 240, 90],
@@ -97,7 +97,7 @@ exports.LABS = [
     {
         uuid: "e0687fcc-df82-479a-83f5-301f78541c70",
         name: "Monthly Improv Jam",
-        type: "class",
+        format: "drop-in",
         dates: ["2016-10-24"],
         times: ["18:00-05:00"],
         durations: [180],

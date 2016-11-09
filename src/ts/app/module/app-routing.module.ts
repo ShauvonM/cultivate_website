@@ -8,6 +8,7 @@ import { CalendarComponent } from '../component/calendar.component';
 import { ForTeachersComponent } from '../component/for-teachers.component';
 
 import { TeacherDetailsComponent } from '../component/teacher-details.component';
+import { LabDetailsComponent } from '../component/lab-details.component';
 
 const routes: Routes = [
     {
@@ -25,6 +26,10 @@ const routes: Routes = [
     {
         path: 'classes',
         component: ClassesComponent
+    },
+    {
+        path: 'classes/:uuid',
+        component: LabDetailsComponent
     },
     {
         path: 'calendar',
