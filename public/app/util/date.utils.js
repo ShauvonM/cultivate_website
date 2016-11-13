@@ -6,8 +6,8 @@ var DateUtils = (function () {
     /**
      * Convenience method to format a given moment object to show the date
      */
-    DateUtils.getDateString = function (time) {
-        if (time.get("y") == moment().get('y')) {
+    DateUtils.getDateString = function (time, year) {
+        if (time.get("y") == moment().get('y') && !year) {
             return time.format(this.DATE_FORMAT);
         }
         else {

@@ -19,8 +19,8 @@ export default class DateUtils {
     /**
      * Convenience method to format a given moment object to show the date
      */
-    static getDateString(time: moment.Moment): string {
-        if (time.get("y") == moment().get('y')) {
+    static getDateString(time: moment.Moment, year?: boolean): string {
+        if (time.get("y") == moment().get('y') && !year) {
             return time.format(this.DATE_FORMAT);
         } else {
             return time.format(this.DATE_FORMAT_YEAR);

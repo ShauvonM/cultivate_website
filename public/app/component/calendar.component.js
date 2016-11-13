@@ -26,6 +26,7 @@ var CalendarComponent = (function () {
         this.labService = labService;
     }
     CalendarComponent.prototype.ngOnInit = function () {
+        // TODO: collapse labs if there are more than three in a day
         var _this = this;
         this.today = moment();
         this.date = this.today.clone().set("date", 1);
@@ -45,13 +46,32 @@ var CalendarComponent = (function () {
         this.date.add("M", 1);
         this.setupCalendar();
     };
+    CalendarComponent.prototype.clickDay = function (day) {
+        if (day && day.date) {
+            this.selectedDate = day;
+            var selectedMoment = this.date.clone().set("date", day.date);
+            this.selectedDateString = date_utils_1.default.getDateString(selectedMoment, true);
+            this.selectedDateISO = date_utils_1.default.getISODate(selectedMoment);
+        }
+        else {
+            this.selectedDate = null;
+            this.selectedDateISO = null;
+            this.selectedDateString = null;
+        }
+    };
     CalendarComponent.prototype.clickLab = function (lab) {
-        this.router.navigate(['/classes', lab.uuid]);
+        if (!this._app.isMobile()) {
+            this.clickLabInfo(lab);
+        }
+    };
+    CalendarComponent.prototype.clickLabInfo = function (lab) {
+        this.router.navigate(['/classes/', lab.uuid]);
     };
     CalendarComponent.prototype.getShortTimeString = function (lab) {
         return date_utils_1.default.getShortTimeForLab(lab);
     };
     CalendarComponent.prototype.setupCalendar = function () {
+        this.clickDay(null);
         this.month = this.date.format(date_utils_1.default.MONTH_YEAR);
         var dateDay = parseInt(this.date.format('d'));
         this.dateInfo = [[]];
@@ -63,11 +83,15 @@ var CalendarComponent = (function () {
         }
         var week = 0;
         for (var day = 1; day <= this.date.daysInMonth(); day++) {
-            this.dateInfo[week].push({
+            var thisDateInfo = {
                 date: day,
                 today: this.date.get('M') == this.today.get('M') && day == this.today.get('date'),
                 labs: this.labService.getLabsForDate(this.date.clone().set("date", day))
-            });
+            };
+            if (thisDateInfo.today) {
+                this.clickDay(thisDateInfo);
+            }
+            this.dateInfo[week].push(thisDateInfo);
             dateDay++;
             if (day < this.date.daysInMonth()) {
                 if (dateDay >= 7) {

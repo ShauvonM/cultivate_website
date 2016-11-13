@@ -305,7 +305,8 @@ img {
   font-weight: bold;
   border-radius: 4px;
   margin-bottom: 5vw;
-  cursor: pointer; }
+  cursor: pointer;
+  background: #FFFFFF; }
   @media only screen and (max-width: 500px) {
     .button {
       padding: 2vw; } }
@@ -714,7 +715,10 @@ cultivate-calendar .page .material {
       border-color: #e5e5e5;
       box-sizing: border-box;
       flex: 1 1;
-      position: relative; }
+      position: relative;
+      box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12);
+      transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+      will-change: box-shadow; }
       .calendar .week .day:before {
         /* makes it square! */
         content: "";
@@ -722,12 +726,17 @@ cultivate-calendar .page .material {
         padding-top: 100%; }
       .calendar .week .day:first-child {
         border-left-width: 1px; }
-      .calendar .week .day .today {
+      .calendar .week .day.active {
+        box-shadow: 0px 3px 3px -2px rgba(0, 0, 0, 0.2), 0px 3px 4px 0px rgba(0, 0, 0, 0.14), 0px 1px 8px 0px rgba(0, 0, 0, 0.12); }
+      .calendar .week .day.today .date {
+        color: #6fab33; }
+      .calendar .week .day.today .today {
         position: absolute;
         top: 0;
         right: 0;
         bottom: 0;
         left: 0;
+        z-index: 0;
         box-shadow: 0px 0px 2px #6fab33 inset; }
       .calendar .week .day .content {
         position: absolute;
@@ -736,10 +745,19 @@ cultivate-calendar .page .material {
         bottom: 0;
         left: 0;
         display: flex;
-        flex-direction: column; }
+        flex-direction: column;
+        cursor: pointer; }
+        @media only screen and (max-width: 500px) {
+          .calendar .week .day .content {
+            justify-content: flex-end; } }
         .calendar .week .day .content .date {
           align-self: flex-end;
           padding: 5px 5px 5px 0; }
+          @media only screen and (max-width: 500px) {
+            .calendar .week .day .content .date {
+              position: absolute;
+              top: 0;
+              right: 0; } }
         .calendar .week .day .content .lab {
           padding: 5px;
           border-radius: 2px;
@@ -747,12 +765,14 @@ cultivate-calendar .page .material {
           font-size: 0.8em;
           color: #ffa70f;
           overflow: hidden;
-          width: 100%;
-          transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
-          will-change: box-shadow;
-          box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12); }
-          .calendar .week .day .content .lab:hover {
-            box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); }
+          width: 100%; }
+          @media only screen and (min-width: 500px) {
+            .calendar .week .day .content .lab {
+              transition: box-shadow 280ms cubic-bezier(0.4, 0, 0.2, 1);
+              will-change: box-shadow;
+              box-shadow: 0px 0px 0px 0px rgba(0, 0, 0, 0.2), 0px 0px 0px 0px rgba(0, 0, 0, 0.14), 0px 0px 0px 0px rgba(0, 0, 0, 0.12); }
+              .calendar .week .day .content .lab:hover {
+                box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12); } }
           .calendar .week .day .content .lab .name {
             width: 100%;
             box-sizing: border-box;
@@ -767,6 +787,14 @@ cultivate-calendar .page .material {
             background: #FFF; }
             .calendar .week .day .content .lab:hover .name {
               white-space: normal; }
+          @media only screen and (max-width: 500px) {
+            .calendar .week .day .content .lab {
+              padding: 0;
+              margin: 0 0 0 2.5px;
+              font-size: 0.7em;
+              line-height: 1.2em; }
+              .calendar .week .day .content .lab .name, .calendar .week .day .content .lab i {
+                display: none; } }
     .calendar .week.header .day {
       border: 0px;
       padding: 0 0 0 10px; }

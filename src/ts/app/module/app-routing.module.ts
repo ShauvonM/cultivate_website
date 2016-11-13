@@ -6,6 +6,7 @@ import { AboutComponent } from "../component/about.component";
 import { ClassesComponent } from '../component/classes.component';
 import { CalendarComponent } from '../component/calendar.component';
 import { ForTeachersComponent } from '../component/for-teachers.component';
+import { ContactUsComponent } from '../component/contact-us.component';
 
 import { TeacherDetailsComponent } from '../component/teacher-details.component';
 import { LabDetailsComponent } from '../component/lab-details.component';
@@ -38,6 +39,10 @@ const routes: Routes = [
     {
         path: 'for-teachers',
         component: ForTeachersComponent
+    },
+    {
+        path: 'contact',
+        component: ContactUsComponent
     }
 ];
 

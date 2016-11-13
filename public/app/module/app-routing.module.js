@@ -15,6 +15,7 @@ var about_component_1 = require("../component/about.component");
 var classes_component_1 = require('../component/classes.component');
 var calendar_component_1 = require('../component/calendar.component');
 var for_teachers_component_1 = require('../component/for-teachers.component');
+var contact_us_component_1 = require('../component/contact-us.component');
 var teacher_details_component_1 = require('../component/teacher-details.component');
 var lab_details_component_1 = require('../component/lab-details.component');
 var routes = [
@@ -45,6 +46,10 @@ var routes = [
     {
         path: 'for-teachers',
         component: for_teachers_component_1.ForTeachersComponent
+    },
+    {
+        path: 'contact',
+        component: contact_us_component_1.ContactUsComponent
     }
 ];
 var AppRoutingModule = (function () {

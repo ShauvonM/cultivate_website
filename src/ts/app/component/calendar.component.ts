@@ -29,6 +29,10 @@ export class CalendarComponent implements OnInit {
     date: moment.Moment;
     today: moment.Moment;
     dateInfo: [DateInfo[]];
+    
+    selectedDate: DateInfo;
+    selectedDateString: string;
+    selectedDateISO: string;
 
     month: string;
 
@@ -39,6 +43,8 @@ export class CalendarComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        // TODO: collapse labs if there are more than three in a day
+
         this.today = moment();
         this.date = this.today.clone().set("date", 1);
         this.labService.getLabs("all")
@@ -61,8 +67,27 @@ export class CalendarComponent implements OnInit {
         this.setupCalendar();
     }
 
+    clickDay(day: DateInfo) {
+        if (day && day.date) {
+            this.selectedDate = day;
+            let selectedMoment = this.date.clone().set("date", day.date);
+            this.selectedDateString = DateUtils.getDateString(selectedMoment, true);
+            this.selectedDateISO = DateUtils.getISODate(selectedMoment);
+        } else {
+            this.selectedDate = null;
+            this.selectedDateISO = null;
+            this.selectedDateString = null;
+        }
+    }
+
     clickLab(lab: Lab): void {
-        this.router.navigate(['/classes', lab.uuid]);
+        if (!this._app.isMobile()) {
+            this.clickLabInfo(lab);
+        }
+    }
+
+    clickLabInfo(lab: Lab): void {
+        this.router.navigate(['/classes/', lab.uuid]);
     }
 
     getShortTimeString(lab: Lab): string {
@@ -70,6 +95,8 @@ export class CalendarComponent implements OnInit {
     }
 
     setupCalendar(): void {
+        this.clickDay(null);
+
         this.month = this.date.format(DateUtils.MONTH_YEAR);
 
         let dateDay:number = parseInt(this.date.format('d'));
@@ -83,11 +110,16 @@ export class CalendarComponent implements OnInit {
         
         let week = 0;
         for (let day = 1; day <= this.date.daysInMonth(); day++) {
-            this.dateInfo[week].push({
+            let thisDateInfo: DateInfo = {
                 date: day,
                 today: this.date.get('M') == this.today.get('M') && day == this.today.get('date'),
                 labs: this.labService.getLabsForDate(this.date.clone().set("date", day))
-            });
+            };
+            if (thisDateInfo.today) {
+                this.clickDay(thisDateInfo);
+            }
+
+            this.dateInfo[week].push(thisDateInfo);
 
             dateDay++;
             if (day < this.date.daysInMonth()) {

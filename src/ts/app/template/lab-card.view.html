@@ -7,7 +7,8 @@
     <span *ngIf="teacher">with {{teacher.firstName}} {{teacher.lastName}}</span>
 
     <span *ngIf="sessionString">{{sessionString}}</span>
-    <span *ngIf="!lab.repeatType && lab.dates.length > 1">{{lab.dates.length}} sessions</span>
+    
+    <span *ngIf="!date && !lab.repeatType && lab.dates.length > 1">{{lab.dates.length}} sessions</span>
 
 </div>
 

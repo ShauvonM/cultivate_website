@@ -51,19 +51,41 @@ cultivate-calendar {
                 border-left-width: 1px;
             }
 
-            .today {
-                @include abs(0,0,0,0);
-                box-shadow: 0px 0px 2px $color-primary inset;
+            @include md-elevation(0);
+            @include md-elevation-transition();
+            &.active {
+                @include md-elevation(3);
+            }
+
+            &.today {
+
+                .date {
+                    color: $color-primary;
+                }
+
+                .today {
+                    @include abs(0,0,0,0,0);
+                    box-shadow: 0px 0px 2px $color-primary inset;
+                }
             }
 
             .content {
                 @include abs(0,0,0,0);
                 display: flex;
                 flex-direction: column;
+                cursor: pointer;
+
+                @media #{$media-mobile} {
+                    justify-content: flex-end;
+                }
 
                 .date {
                     align-self: flex-end;
                     padding: $calendar-content-padding $calendar-content-padding $calendar-content-padding 0;
+
+                    @media #{$media-mobile} {
+                        @include abs(0, 0, null, null);
+                    }
                 }
 
                 .lab {
@@ -75,11 +97,13 @@ cultivate-calendar {
                     overflow: hidden;
                     width: 100%;
                     
-                    @include md-elevation-transition();
-                    @include md-elevation(0);
+                    @media #{$media-desktop} {
+                        @include md-elevation-transition();
+                        @include md-elevation(0);
 
-                    &:hover {
-                        @include md-elevation(4);
+                        &:hover {
+                            @include md-elevation(4);
+                        }
                     }
 
                     .name {
@@ -101,6 +125,17 @@ cultivate-calendar {
 
                         .name {
                             white-space: normal;
+                        }
+                    }
+
+                    @media #{$media-mobile} {
+                        padding: 0;
+                        margin: 0 0 0 $calendar-content-padding / 2;
+                        font-size: 0.7em;
+                        line-height: 1.2em;
+
+                        .name, i {
+                            display: none;
                         }
                     }
 

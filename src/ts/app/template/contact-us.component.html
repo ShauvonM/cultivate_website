@@ -1,0 +1,38 @@
+<nav-component [large]="false" (windowScroll)="onScroll($event)"></nav-component>
+
+<div class="page">
+
+    <div class="material">
+
+        <h2>contact us</h2>
+
+        <form name="contact" (submit)="submitForm()">
+
+            <label>Name
+                <input type="text" [(ngModel)]="formData.name" name="contactname" />
+            </label>
+
+            <label>E-Mail
+                <input type="email" [(ngModel)]="formData.email" name="email" />
+            </label>
+
+            <label>What are you interested in?
+                <select name="subject" [(ngModel)]="formData.subject">
+                    <option>I want to take a class at Cultivate</option>
+                    <option>I want to teach a class with Cultivate</option>
+                    <option>I have a comment about Cultivate</option>
+                    <option>I want to discuss something else</option>
+                </select>
+            </label>
+
+            <label>Message</label>
+            <textarea name="message" [(ngModel)]="formData.message"
+                rows="7"></textarea>
+            
+            <button type="submit" class="button">Send</button>
+
+        </form>
+
+    </div>
+
+</div>

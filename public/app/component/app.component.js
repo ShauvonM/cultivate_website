@@ -17,6 +17,9 @@ var AppComponent = (function () {
     }
     AppComponent.prototype.ngOnInit = function () {
     };
+    AppComponent.prototype.isMobile = function () {
+        return window.innerWidth <= 500;
+    };
     AppComponent = __decorate([
         core_1.Component({
             moduleId: module.id,

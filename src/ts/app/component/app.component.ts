@@ -21,4 +21,8 @@ export class AppComponent implements OnInit {
         
     }
 
+    isMobile(): boolean {
+        return window.innerWidth <= 500;
+    }
+
 }

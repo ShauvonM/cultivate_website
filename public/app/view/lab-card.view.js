@@ -12,6 +12,7 @@ var core_1 = require('@angular/core');
 var moment = require('moment');
 var lab_service_1 = require("../service/lab.service");
 var team_service_1 = require("../service/team.service");
+var date_utils_1 = require("../util/date.utils");
 var LabCardView = (function () {
     function LabCardView(labService, teamService) {
         this.labService = labService;
@@ -21,8 +22,20 @@ var LabCardView = (function () {
         var _this = this;
         this.teamService.getPerson(this.lab.teacherKey)
             .then(function (teacher) { return _this.teacher = teacher; });
-        this.getSimpleDate();
+        if (this.date) {
+            this.getTime();
+        }
+        else {
+            this.getSimpleDate();
+        }
         window['moment'] = moment;
+    };
+    LabCardView.prototype.getTime = function () {
+        var index = this.lab.dates.indexOf(this.date);
+        if (index < 0) {
+            index = 0;
+        }
+        this.sessionString = date_utils_1.default.getStartToEndTimeString(this.lab, index);
     };
     LabCardView.prototype.getSimpleDate = function () {
         if (this.lab.repeatType) {
@@ -91,6 +104,10 @@ var LabCardView = (function () {
         core_1.Input(), 
         __metadata('design:type', lab_service_1.Lab)
     ], LabCardView.prototype, "lab", void 0);
+    __decorate([
+        core_1.Input(), 
+        __metadata('design:type', String)
+    ], LabCardView.prototype, "date", void 0);
     LabCardView = __decorate([
         core_1.Component({
             moduleId: module.id,

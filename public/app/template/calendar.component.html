@@ -14,7 +14,7 @@
 
         <div class="month">{{month}}</div>
 
-        <div class="calendar">
+        <div class="calendar content-item">
 
             <div class="week header">
                 
@@ -37,8 +37,11 @@
             <div class="week" *ngFor="let week of dateInfo">
                 
                 <div class="day" *ngFor="let day of week"
-                    [class.outside]="day.date == 0">
-                    <div class="today" *ngIf="day.today"></div>
+                    [class.outside]="day.date == 0"
+                    [class.today]="day.today"
+                    [class.active]="selectedDate && day.date && selectedDate.date == day.date"
+                    (click)="clickDay(day)">
+                    <div class="border today" *ngIf="day.today"></div>
 
                     <div class="content" *ngIf="day.date > 0">
                         <span class="date">{{day.date}}</span>
@@ -50,7 +53,7 @@
                             (click)="clickLab(lab)">
                             
                             <span class="time" [innerHTML]="getShortTimeString(lab)"></span>
-                            <i [class]="'icon icon-' + lab.icon" *ngIf="lab.icon && day.labs.length == 1"></i>
+                            <i [class]="'icon icon-' + lab.icon" *ngIf="lab.icon && lab.days && day.labs.length < 3"></i>
                             <span class="name">{{lab.name}}</span>
 
                         </div>
@@ -61,6 +64,20 @@
             </div>
 
         </div>
+
+        <h2 *ngIf="selectedDateString">{{selectedDateString}}</h2>
+
+        <div class="column content-item" *ngIf="selectedDate && selectedDate.labs.length">
+
+            <div *ngFor="let lab of selectedDate.labs"
+                class="model lab-card clickable"
+                [lab]="lab"
+                [date]="selectedDateISO"
+                (click)="clickLabInfo(lab)"></div>
+
+        </div>
+
+        <p *ngIf="selectedDate && ( !selectedDate.labs || !selectedDate.labs.length )">No events today</p>
 
     </div>
 

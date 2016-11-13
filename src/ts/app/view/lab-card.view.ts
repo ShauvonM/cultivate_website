@@ -9,6 +9,8 @@ import moment = require('moment');
 import { Lab, LabService } from "../service/lab.service";
 import { Person, TeamService } from "../service/team.service";
 
+import DateUtils from "../util/date.utils";
+
 @Component({
     moduleId: module.id,
     selector: '.lab-card',
@@ -17,6 +19,7 @@ import { Person, TeamService } from "../service/team.service";
 export class LabCardView implements OnInit {
 
     @Input() lab: Lab;
+    @Input() date: string;
     teacher: Person;
 
     sessionString: string;
@@ -30,9 +33,21 @@ export class LabCardView implements OnInit {
         this.teamService.getPerson(this.lab.teacherKey)
             .then(teacher => this.teacher = teacher);
 
-        this.getSimpleDate();
+        if (this.date) {
+            this.getTime()
+        } else {
+            this.getSimpleDate();
+        }
 
         window['moment'] = moment;
+    }
+
+    getTime(): void {
+        let index = this.lab.dates.indexOf(this.date);
+        if (index < 0) {
+            index = 0;
+        }
+        this.sessionString = DateUtils.getStartToEndTimeString(this.lab, index);
     }
 
     getSimpleDate(): void {
